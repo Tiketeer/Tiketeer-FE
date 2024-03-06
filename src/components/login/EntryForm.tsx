@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import SignIn from './SignIn';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -22,7 +23,7 @@ function CustomTabPanel(props: TabPanelProps) {
             {...other}
         >
             {value === index && (
-                <Box sx={{ p: 3 }}>
+                <Box sx={{}}>
                     <Typography>{children}</Typography>
                 </Box>
             )}
@@ -48,15 +49,15 @@ export default function EntryForm() {
         <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="Item One" {...a11yProps(0)} />
-                    <Tab label="Item Two" {...a11yProps(1)} />
+                    <Tab label="SIGN IN" {...a11yProps(0)} />
+                    <Tab label="REGISTER" {...a11yProps(1)} />
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
-                Item One
+                <SignIn />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                Item Two
+                REGISTER
             </CustomTabPanel>
         </Box>
     );
