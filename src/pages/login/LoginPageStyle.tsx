@@ -17,7 +17,7 @@ export const SplitScreenContainer = styled.div`
 `;
 
 export const LeftHalf = styled.div`
-    flex: 1;
+    flex-grow: 1;
     background-size: cover;
     background-position: center;
     display: flex;
@@ -32,9 +32,10 @@ export const LeftHalf = styled.div`
 `;
 
 export const RightHalf = styled.div`
-    flex: 1;
+    width: 700px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     position: relative;
 `;
@@ -50,12 +51,13 @@ export const CenteredText = styled.div`
 `;
 
 export const EntryFormContainer = styled.div`
-    width: 70%;
+    width: 400px;
     height: 70%;
     background-color: #fff;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
+    gap: 20px;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     position: absolute;
 `;

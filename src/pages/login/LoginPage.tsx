@@ -7,6 +7,8 @@ import {
     RightHalf,
     SplitScreenContainer,
 } from './LoginPageStyle';
+import { Divider } from '@mui/material';
+import SocialLoginButtons from '../../components/login/SocialLoginButtons';
 
 const LoginPage = () => {
     return (
@@ -20,6 +22,8 @@ const LoginPage = () => {
             <RightHalf>
                 <EntryFormContainer>
                     <EntryForm />
+                    <Divider style={{ width: '100%', opacity: 0.5 }}>Or Continue with</Divider>
+                    <SocialLoginButtons />
                 </EntryFormContainer>
             </RightHalf>
         </SplitScreenContainer>
