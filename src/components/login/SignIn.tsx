@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
-import { Button, TextField } from '@mui/material';
-import { COLOR } from 'color/color';
+import { TextField } from '@mui/material';
 import { ContainedButton } from '../button/ButtonStyle';
 
 export const SignInHeaderText = styled.div`
