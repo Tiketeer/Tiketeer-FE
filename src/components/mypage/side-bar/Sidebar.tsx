@@ -4,7 +4,7 @@ import { COLOR } from 'color/color';
 
 export const MyPageSideBarContainer = styled.div`
     width: fit-content;
-    height: 100%;
+    height: 80vh;
     padding: 32px 0px 0px 96px;
     font-family: Abhaya Libre;
     display: flex;
