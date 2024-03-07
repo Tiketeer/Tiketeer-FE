@@ -5,8 +5,9 @@ const myPageContentWrapperPadding = 5;
 
 const MyPageContentWrapperContainer = styled.div`
     width: 100%;
-    height: ${100 - 2 * myPageContentWrapperPadding}%;
+    height: 100%;
     padding: ${myPageContentWrapperPadding}%;
+    box-sizing: border-box;
 `;
 
 const MyPageContentWrapper = (props: { path?: string }) => {

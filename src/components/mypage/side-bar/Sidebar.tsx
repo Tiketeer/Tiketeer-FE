@@ -4,13 +4,14 @@ import { COLOR } from 'color/color';
 
 export const MyPageSideBarContainer = styled.div`
     width: fit-content;
-    height: 80vh;
+    height: 85vh;
     padding: 32px 0px 0px 96px;
     font-family: Abhaya Libre;
     display: flex;
     flex-direction: column;
     gap: 16px;
     box-shadow: 4px 0 2px -2px rgba(0, 0, 0, 0.26);
+    box-sizing: border-box;
 `;
 
 export const MyPageSideBarTitleContainer = styled.div`

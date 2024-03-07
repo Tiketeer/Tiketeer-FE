@@ -7,10 +7,11 @@ import PageHeaderAuthBtnSet from './AuthBtnSet';
 const headerPadding = 5;
 
 const PageHeaderWrapperContainer = styled.div`
-    width: ${100 - 2 * headerPadding}%;
+    width: 100%;
     height: 73px;
     align-items: center;
     padding: 0% ${headerPadding}%;
+    box-sizing: border-box;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.26);
 `;
 

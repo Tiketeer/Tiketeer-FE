@@ -6,6 +6,7 @@ const MyPageSideBarBodyContainer = styled.div`
     flex-direction: column;
     gap: 18px;
     padding-left: 6px;
+    box-sizing: border-box;
 `;
 
 const MyPageSideBarBody = (props: { contents: Record<string, string[]>; selectorKey?: string }) => {
