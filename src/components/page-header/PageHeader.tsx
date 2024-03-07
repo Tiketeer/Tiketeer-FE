@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { COLOR } from 'color/color';
 import { PROJECT_NAME } from 'constant';
-import CategoryPanel from './CategoryList';
+import CategoryPanel from './CategoryPanel';
 import PageHeaderAuthBtnSet from './AuthBtnSet';
 
 const headerPadding = 5;
