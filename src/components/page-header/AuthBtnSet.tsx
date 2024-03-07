@@ -1,5 +1,8 @@
 import styled from '@emotion/styled';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AuthButton from './AuthButton';
+import { CSSProperties } from 'react';
+import { COLOR } from 'color/color';
 
 export const btnSetPadding = 25;
 
@@ -14,6 +17,12 @@ export const PageHeaderAuthBtnSetContainer = styled.div`
     gap: 35px;
 `;
 
+const ProfileStyle: CSSProperties = {
+    height: 40,
+    width: 40,
+    color: COLOR.LIGHTER,
+};
+
 const PageHeaderAuthBtnSet = (props: { isLogined: boolean }) => {
     const { isLogined } = props;
     return (
@@ -21,7 +30,7 @@ const PageHeaderAuthBtnSet = (props: { isLogined: boolean }) => {
             {isLogined ? (
                 <>
                     <AuthButton text="Logout" isFilled={true} />
-                    <div>Profile</div>
+                    <AccountCircleIcon style={ProfileStyle}></AccountCircleIcon>
                 </>
             ) : (
                 <>
