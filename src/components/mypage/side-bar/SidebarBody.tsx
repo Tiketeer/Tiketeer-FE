@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import SideBarElement from './SidebarElement';
 
-export const MyPageSideBarBodyContainer = styled.div`
+const MyPageSideBarBodyContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 18px;
