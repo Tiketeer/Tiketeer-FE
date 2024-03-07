@@ -6,7 +6,7 @@ import PageHeaderAuthBtnSet from './AuthBtnSet';
 
 const headerPadding = 5;
 
-export const PageHeaderWrapperContainer = styled.div`
+const PageHeaderWrapperContainer = styled.div`
     width: ${100 - 2 * headerPadding}%;
     height: 73px;
     align-items: center;
@@ -14,7 +14,7 @@ export const PageHeaderWrapperContainer = styled.div`
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.26);
 `;
 
-export const PageHeaderContainer = styled.div`
+const PageHeaderContainer = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
@@ -24,7 +24,7 @@ export const PageHeaderContainer = styled.div`
     justify-content: space-around;
 `;
 
-export const LogoContainer = styled.div`
+const LogoContainer = styled.div`
     width: fit-content;
     height: fit-content;
     font-size: 30px;
