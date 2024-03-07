@@ -15,6 +15,7 @@ const AuthButton = (props: {
         fontSize: 14,
         fontWeight: 'medium',
         fontFamily: 'General Sans',
+        textTransform: 'none',
         ':hover': {
             backgroundColor: isFilled ? COLOR.DARKER : COLOR.LIGHTER,
         },
