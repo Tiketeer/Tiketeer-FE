@@ -4,7 +4,7 @@ import { COLOR } from 'color/color';
 import { CSSProperties } from 'react';
 import ProfileButton from './ProfileButton';
 
-const MyPageMainContentContainer = styled.div`
+const BaseContainer = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
@@ -12,7 +12,7 @@ const MyPageMainContentContainer = styled.div`
     gap: 10px;
 `;
 
-const MyPageMainProfileContainer = styled.div`
+const ProfileContainer = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
@@ -24,7 +24,7 @@ const MyPageMainProfileContainer = styled.div`
     box-sizing: border-box;
 `;
 
-const MyPageMainProfileImgWrapper = styled.div`
+const ProfileImgWrapper = styled.div`
     width: 100%;
     height: 100%;
     padding: 40px;
@@ -35,7 +35,7 @@ const MyPageMainProfileImgWrapper = styled.div`
     box-sizing: border-box;
 `;
 
-const MyPageMainProfileBtnContainer = styled.div`
+const ProfileBtnContainer = styled.div`
     width: 100%;
     height: 100%;
     padding: 10px;
@@ -46,10 +46,51 @@ const MyPageMainProfileBtnContainer = styled.div`
     justify-content: center;
 `;
 
-const MyPageMainInfoContainer = styled.div`
+const InfoContainer = styled.div`
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 120px 10px;
+    box-sizing: border-box;
+    gap: 24px;
 `;
+
+const InfoElementContainer = styled.div`
+    width: 100%;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+    gap: 10px;
+`;
+
+const InfoElementTitleContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    font-size: 36px;
+    font-weight: 500;
+    font-family: Abhaya Libre;
+`;
+
+const InfoElementContentContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    font-weight: 300;
+    font-family: Abhaya Libre;
+`;
+
+const InfoElement = (props: { title: string; content: string }) => {
+    const { title, content } = props;
+    return (
+        <InfoElementContainer>
+            <InfoElementTitleContainer>{title}</InfoElementTitleContainer>
+            <InfoElementContentContainer>{content}</InfoElementContentContainer>
+        </InfoElementContainer>
+    );
+};
 
 const MyPageMainContent = () => {
     const profileStyle: CSSProperties = {
@@ -57,19 +98,26 @@ const MyPageMainContent = () => {
         height: 240,
         color: COLOR.LIGHTER,
     };
+    const email = 'Test@test.com';
+    const dateOfRegister = '2024.03.05';
+    const point = 100000;
     return (
-        <MyPageMainContentContainer>
-            <MyPageMainProfileContainer>
-                <MyPageMainProfileImgWrapper>
+        <BaseContainer>
+            <ProfileContainer>
+                <ProfileImgWrapper>
                     <AccountCircleIcon style={profileStyle} />
-                </MyPageMainProfileImgWrapper>
-                <MyPageMainProfileBtnContainer>
+                </ProfileImgWrapper>
+                <ProfileBtnContainer>
                     <ProfileButton title="Change Image" isFilled={true} />
                     <ProfileButton title="Delete Image" isFilled={false} />
-                </MyPageMainProfileBtnContainer>
-            </MyPageMainProfileContainer>
-            <MyPageMainInfoContainer></MyPageMainInfoContainer>
-        </MyPageMainContentContainer>
+                </ProfileBtnContainer>
+            </ProfileContainer>
+            <InfoContainer>
+                <InfoElement title="Email" content={email} />
+                <InfoElement title="Date of Registration" content={dateOfRegister} />
+                <InfoElement title="Point" content={point.toLocaleString()} />
+            </InfoContainer>
+        </BaseContainer>
     );
 };
 
