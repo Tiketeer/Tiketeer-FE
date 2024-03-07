@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import MyPageSideBar from 'components/mypage/Sidebar';
+import MyPageContentWrapper from 'components/mypage/ContentWrapper';
+import MyPageSideBar from 'components/mypage/side-bar/Sidebar';
 import PageFooter from 'components/page-footer/PageFooter';
 import PageHeader from 'components/page-header/PageHeader';
 
@@ -13,7 +14,7 @@ const MyPageContainer = styled.div`
 const bodyPadding = 5;
 const MyPageBodyContainer = styled.div`
     width: ${100 - 2 * bodyPadding}%;
-    height: 100%;
+    height: max-content;
     display: flex;
     flex-direction: row;
     padding: 0% ${bodyPadding}%;
@@ -25,6 +26,7 @@ const MyPage = () => {
             <PageHeader isLogined={true} />
             <MyPageBodyContainer>
                 <MyPageSideBar />
+                <MyPageContentWrapper />
             </MyPageBodyContainer>
             <PageFooter />
         </MyPageContainer>
