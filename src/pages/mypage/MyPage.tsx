@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
+import MyPageSideBar from 'components/mypage/Sidebar';
 import PageHeader from 'components/page-header/PageHeader';
-import MyPageSideBar from './Sidebar';
 
 const MyPageContainer = styled.div`
     width: 100vw;
