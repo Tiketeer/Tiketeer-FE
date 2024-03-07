@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import MyPageSideBar from 'components/mypage/Sidebar';
+import PageFooter from 'components/page-footer/PageFooter';
 import PageHeader from 'components/page-header/PageHeader';
 
 const MyPageContainer = styled.div`
@@ -25,6 +26,7 @@ const MyPage = () => {
             <MyPageBodyContainer>
                 <MyPageSideBar />
             </MyPageBodyContainer>
+            <PageFooter />
         </MyPageContainer>
     );
 };
