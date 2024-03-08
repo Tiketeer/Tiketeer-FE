@@ -14,6 +14,10 @@ function App() {
                 path="/mypage/change/password"
                 element={<MyPage path={MYPAGE_PATH.CHANGE_PWD} />}
             ></Route>
+            <Route
+                path="/mypage/change/email"
+                element={<MyPage path={MYPAGE_PATH.CHANGE_EMAIL} />}
+            ></Route>
             <Route path="/mypage" element={<MyPage />} />
         </Routes>
     );

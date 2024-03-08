@@ -84,13 +84,14 @@ const MyPageChangePwdContent = () => {
                     isFilled={true}
                     callback={() => {
                         console.log(oldPwd);
+                        console.log(newPwd);
                     }}
                 />
                 <CommonButton
                     text="Cancel"
                     isFilled={false}
                     callback={() => {
-                        console.log(newPwd);
+                        console.log('Cancel');
                     }}
                 />
             </InputPwdBtnSetContainer>
