@@ -13,11 +13,12 @@ const MyPageContainer = styled.div`
 
 const bodyPadding = 5;
 const MyPageBodyContainer = styled.div`
-    width: ${100 - 2 * bodyPadding}%;
+    width: 100%;
     height: max-content;
     display: flex;
     flex-direction: row;
     padding: 0% ${bodyPadding}%;
+    box-sizing: border-box;
 `;
 
 const MyPage = () => {
