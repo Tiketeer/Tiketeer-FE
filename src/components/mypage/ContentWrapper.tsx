@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 import MyPageMainContent from './main/MyPageMainContent';
+import MyPageChangePwdContent from './change-password/MyPageChangePwdContent';
+import { MYPAGE_PATH, MyPagePathType } from './constant';
 
 const myPageContentWrapperPadding = 5;
 
@@ -10,11 +12,17 @@ const MyPageContentWrapperContainer = styled.div`
     box-sizing: border-box;
 `;
 
-const MyPageContentWrapper = (props: { path?: string }) => {
-    const { path = '/' } = props;
+const MyPageContentWrapper = (props: { path: MyPagePathType }) => {
+    const { path } = props;
     return (
         <MyPageContentWrapperContainer>
-            {path === '/' ? <MyPageMainContent></MyPageMainContent> : <></>}
+            {path === MYPAGE_PATH.MAIN ? (
+                <MyPageMainContent />
+            ) : path === MYPAGE_PATH.CHANGE_PWD ? (
+                <MyPageChangePwdContent />
+            ) : (
+                <></>
+            )}
         </MyPageContentWrapperContainer>
     );
 };
