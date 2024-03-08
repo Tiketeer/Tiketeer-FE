@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Button, TextField } from '@mui/material';
-import { COLOR } from 'color/color';
+import { COLOR } from '../../color/color';
 import React from 'react';
 
 export const RegisterContainer = styled.div`
