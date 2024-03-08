@@ -1,12 +1,36 @@
+import styled from '@emotion/styled';
+import MyPageContentWrapper from 'components/mypage/ContentWrapper';
+import MyPageSideBar from 'components/mypage/side-bar/Sidebar';
 import PageFooter from 'components/page-footer/PageFooter';
 import PageHeader from 'components/page-header/PageHeader';
 
+const MyPageContainer = styled.div`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+`;
+
+const bodyPadding = 5;
+const MyPageBodyContainer = styled.div`
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    padding: 0% ${bodyPadding}%;
+    box-sizing: border-box;
+`;
+
 const MyPage = () => {
     return (
-        <div>
+        <MyPageContainer>
             <PageHeader isLogined={true} />
+            <MyPageBodyContainer>
+                <MyPageSideBar />
+                <MyPageContentWrapper />
+            </MyPageBodyContainer>
             <PageFooter />
-        </div>
+        </MyPageContainer>
     );
 };
 

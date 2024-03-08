@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import { COLOR } from 'color/color';
 
-export const CategoryList = ['Concerts', 'Arts', 'Conference', 'Movies', 'International'];
+const CategoryList = ['Concerts', 'Arts', 'Conference', 'Movies', 'International'];
 
-export const CategoryContainer = styled.div`
+const CategoryContainer = styled.div`
     display: flex;
     flex-direction: row;
     gap: 35px;
@@ -11,11 +11,11 @@ export const CategoryContainer = styled.div`
     padding: 16px 12px;
 `;
 
-export const CategoryElementContainer = styled.div`
+const CategoryElementContainer = styled.div`
     padding: 10px;
 `;
 
-export const CategoryElementBtn = styled.button`
+const CategoryElementBtn = styled.button`
     font-size: 18px;
     font-weight: bold;
     text-align: center;
