@@ -16,7 +16,7 @@ function App() {
                 element={<MyPage path={MYPAGE_PATH.CHANGE_PWD} />}
             ></Route>
             <Route path="/mypage" element={<MyPage />} />
-            <Route path="/main" element={<MainPage />} />
+            <Route path="/" element={<MainPage />} />
         </Routes>
     );
 }
