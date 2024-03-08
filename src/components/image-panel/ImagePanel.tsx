@@ -23,7 +23,11 @@ export const TextBody = styled.div`
     color: ${COLOR.DEFAULT};
 `;
 
-export const ImageArea = styled.div``;
+export const ImageArea = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+`;
 
 const ImagePanel = () => {
     return (
@@ -33,10 +37,10 @@ const ImagePanel = () => {
             </TextArea>
             <ImageArea>
                 <img src={Image3} alt="first"></img>
-                <img src={Image1} alt="second"></img>
+                <img src={Image1} alt="second" height="70%"></img>
                 <img src={woman1} alt="woman1"></img>
-                <img src={woman2} alt="woman2"></img>
                 <img src={man} alt="man"></img>
+                <img src={woman2} alt="woman2"></img>
                 <img src={Image2} alt="fourth"></img>
             </ImageArea>
         </PanelContainer>

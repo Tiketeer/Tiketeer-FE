@@ -1,32 +1,27 @@
 import styled from '@emotion/styled';
-
-interface ticketing {
-    imgUrl: string;
-    eventTime: string;
-    title: string;
-    price: number;
-    location: string;
-}
+import { ticketing } from 'type/ticketing';
+import GalleryArea from './GalleryArea';
 
 export const GalleryContainer = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+
+    margin: 100px 20px;
 `;
 export const EventTextArea = styled.div`
     font-size: 20px;
-`;
-
-export const GalleryArea = styled.div`
-    display: flex;
+    margin-bottom: 25px;
 `;
 
 export const TicketingArea = styled.div``;
 
 const TicketingGallery = (props: { ticketings: ticketing[] }) => {
+    const { ticketings } = props;
     return (
         <GalleryContainer>
-            <EventTextArea></EventTextArea>
-            <GalleryArea></GalleryArea>
+            <EventTextArea>Event</EventTextArea>
+            <GalleryArea ticketings={ticketings}></GalleryArea>
         </GalleryContainer>
     );
 };
