@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
 import MyPageSideBarBody from './SidebarBody';
 import { COLOR } from 'color/color';
+import { MyPagePathType } from '../constant';
+import { PathToButtonKey } from './constant';
+import { useNavigate } from 'react-router-dom';
 
 export const MyPageSideBarContainer = styled.div`
     width: fit-content;
@@ -24,16 +27,15 @@ export const MyPageSideBarTitleContainer = styled.div`
     }
 `;
 
-const MyPageSideBar = () => {
-    const content = {
-        'Ticketing Info': ['Purchases', 'Sales'],
-        'My Info': ['Change Password', 'Change Email'],
-    };
-
+const MyPageSideBar = (props: { path: MyPagePathType }) => {
+    const { path } = props;
+    const navigate = useNavigate();
     return (
         <MyPageSideBarContainer>
-            <MyPageSideBarTitleContainer>My Page</MyPageSideBarTitleContainer>
-            <MyPageSideBarBody contents={content}></MyPageSideBarBody>
+            <MyPageSideBarTitleContainer onClick={() => navigate('/mypage')}>
+                My Page
+            </MyPageSideBarTitleContainer>
+            <MyPageSideBarBody selectorKey={PathToButtonKey[path]}></MyPageSideBarBody>
         </MyPageSideBarContainer>
     );
 };

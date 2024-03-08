@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SignIn from './SignIn';
+import Register from './Register';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -57,7 +58,7 @@ export default function EntryForm() {
                 <SignIn />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                REGISTER
+                <Register />
             </CustomTabPanel>
         </Box>
     );
