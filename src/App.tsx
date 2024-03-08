@@ -4,6 +4,7 @@ import LoginPage from 'pages/login/LoginPage';
 import EmailConfirmPage from 'pages/confirm/EmailConfirmPage';
 import MyPage from 'pages/mypage/MyPage';
 import { MYPAGE_PATH } from 'components/mypage/constant';
+import MainPage from 'pages/main/MainPage';
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                 element={<MyPage path={MYPAGE_PATH.CHANGE_EMAIL} />}
             ></Route>
             <Route path="/mypage" element={<MyPage />} />
+            <Route path="/" element={<MainPage />} />
         </Routes>
     );
 }
