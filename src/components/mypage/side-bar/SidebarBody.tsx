@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import SideBarElement from './SidebarElement';
+import { Contents } from './constant';
 
 const MyPageSideBarBodyContainer = styled.div`
     display: flex;
@@ -9,8 +10,9 @@ const MyPageSideBarBodyContainer = styled.div`
     box-sizing: border-box;
 `;
 
-const MyPageSideBarBody = (props: { contents: Record<string, string[]>; selectorKey?: string }) => {
-    const { contents, selectorKey } = props;
+const MyPageSideBarBody = (props: { selectorKey?: string }) => {
+    const contents = Contents;
+    const { selectorKey } = props;
     return (
         <MyPageSideBarBodyContainer>
             {Object.keys(contents).map(title => {
