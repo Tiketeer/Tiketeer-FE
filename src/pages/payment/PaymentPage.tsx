@@ -9,10 +9,10 @@ import {
     Content,
     PaymentSection,
     SectionTitle,
-    Option,
+    OptionStyled,
     OptionDetails,
     OptionLabel,
-    OptionHighlight,
+    OptionHighlightStyled,
     VerticalDivider,
     DetailsSection,
     EventDetails,
@@ -39,7 +39,8 @@ import {
     MainContent,
 } from 'components/payment/Payment';
 import Radio from '@mui/material/Radio';
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
+import { StyledComponent } from '@emotion/styled';
 
 const PaymentPage = () => {
     const [selectedValue, setSelectedValue] = useState('card');
@@ -48,6 +49,41 @@ const PaymentPage = () => {
         setSelectedValue(event.target.value);
     };
 
+    function Option({
+        onClick,
+        children,
+    }: {
+        onClick?: React.MouseEventHandler<HTMLDivElement>;
+        children: ReactElement;
+    }) {
+        return <OptionStyled onClick={onClick}>{children}</OptionStyled>;
+    }
+
+    function OptionHighlight({
+        onClick,
+        children,
+    }: {
+        onClick?: React.MouseEventHandler<HTMLDivElement>;
+        children: ReactElement;
+    }) {
+        return <OptionHighlightStyled onClick={onClick}>{children}</OptionHighlightStyled>;
+    }
+
+    const PaymentOption = ({
+        isChecked,
+        onClick,
+        children,
+    }: {
+        isChecked: boolean;
+        onClick?: React.MouseEventHandler<HTMLDivElement>;
+        children: ReactElement;
+    }) => {
+        return isChecked ? (
+            <OptionHighlight onClick={onClick}>{children}</OptionHighlight>
+        ) : (
+            <Option onClick={onClick}>{children}</Option>
+        );
+    };
     return (
         <PageWrapper>
             <PageHeader isLogined={true} />
@@ -66,7 +102,10 @@ const PaymentPage = () => {
                     <Content>
                         <PaymentSection>
                             <SectionTitle>Payment Method</SectionTitle>
-                            <Option>
+                            <PaymentOption
+                                isChecked={selectedValue === 'point'}
+                                onClick={() => setSelectedValue('point')}
+                            >
                                 <OptionDetails>
                                     <Radio
                                         checked={selectedValue === 'point'}
@@ -74,10 +113,15 @@ const PaymentPage = () => {
                                         value="point"
                                         name="radio-buttons"
                                     />
-                                    <OptionLabel>Point</OptionLabel>
+                                    <OptionLabel defaultChecked={selectedValue === 'point'}>
+                                        Point
+                                    </OptionLabel>
                                 </OptionDetails>
-                            </Option>
-                            <OptionHighlight>
+                            </PaymentOption>
+                            <PaymentOption
+                                isChecked={selectedValue === 'card'}
+                                onClick={() => setSelectedValue('card')}
+                            >
                                 <OptionDetails>
                                     <Radio
                                         checked={selectedValue === 'card'}
@@ -85,11 +129,11 @@ const PaymentPage = () => {
                                         value="card"
                                         name="radio-buttons"
                                     />
-                                    <OptionLabel style={{ color: '#4f4cee' }}>
+                                    <OptionLabel defaultChecked={selectedValue === 'card'}>
                                         Credit/Debit Card
                                     </OptionLabel>
                                 </OptionDetails>
-                            </OptionHighlight>
+                            </PaymentOption>
                         </PaymentSection>
                         <VerticalDivider />
                         <DetailsSection>

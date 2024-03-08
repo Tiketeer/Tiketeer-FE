@@ -99,18 +99,22 @@ export const SectionTitle = styled.div`
     color: #000;
 `;
 
-export const Option = styled.div`
-    margin-top: 34px;
+export const OptionStyled = styled.div`
+    margin-top: 25px;
     padding: 2px;
     border: 1px solid #828282;
     border-radius: 4px;
     display: flex;
+    cursor: pointer;
+    box-sizing: border-box;
 `;
 
-export const OptionHighlight = styled(Option)`
-    margin-top: 12px;
+export const OptionHighlightStyled = styled(OptionStyled)`
+    margin-top: 25px;
     box-shadow: 6px 8px 0px 0px #0022ba;
     border: 2px solid #4f4cee;
+    cursor: pointer;
+    box-sizing: border-box;
 `;
 
 export const OptionDetails = styled.div`
@@ -120,7 +124,7 @@ export const OptionDetails = styled.div`
 `;
 
 export const OptionLabel = styled.div`
-    color: #1b1b25;
+    color: ${props => (props.defaultChecked ? '#4f4cee' : '#1b1b25')};
     font-size: 14px;
     font-weight: 500;
 `;
