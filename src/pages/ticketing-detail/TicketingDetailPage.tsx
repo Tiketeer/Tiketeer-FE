@@ -47,7 +47,7 @@ const ButtonBox = styled.div`
 
 const TicketingDetailPage = () => {
     const info: ticketingDetail = {
-        eventTime: '2024-04-01 12:00:00',
+        eventTime: '2024-03-01 12:00:00',
         location: 'The Icon, BSD',
         title: 'Panic! at the Disco',
         price: 450000,

@@ -5,8 +5,6 @@ const TicketingReserveContainer = styled.div`
     display: flex;
     flex-direction: column;
 
-    width: 100%;
-
     border: 1px solid #ccc;
 
     margin: 10px;
