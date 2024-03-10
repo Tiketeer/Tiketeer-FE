@@ -5,3 +5,8 @@ export interface ticketing {
     price: number;
     location: string;
 }
+
+export interface ticketingDetail extends ticketing {
+    description: string;
+    runningTime: number;
+}

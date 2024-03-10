@@ -23,3 +23,9 @@ export function getDate(date: string): string {
     if (d < 10) return '0' + d;
     return d.toString();
 }
+
+export function getMonth(date: string): string {
+    const m = new Date(date).getMonth() + 1;
+    if (m < 10) return '0' + m;
+    return m.toString();
+}

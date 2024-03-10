@@ -12,8 +12,6 @@ export const MainContainer = styled.div`
     flex-direction: column;
 
     justify-content: space-between;
-
-    flex-wrap: wrap;
 `;
 
 const TicketingContainer = styled.div`
