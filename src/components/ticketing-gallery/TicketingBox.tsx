@@ -23,7 +23,6 @@ export const Image = styled.img`
     width: 100%;
     height: 100%;
     object-fit: contain;
-    /* object-fit: contain;을 사용하면 이미지가 비율을 유지하며 부모 요소에 맞춰집니다. */
     display: block;
 `;
 
