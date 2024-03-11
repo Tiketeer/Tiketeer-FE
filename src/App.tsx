@@ -8,6 +8,7 @@ import PaymentPage from 'pages/payment/PaymentPage';
 import TicketingDetailPage from 'pages/ticketing-detail/TicketingDetailPage';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import OrderDetailPage from 'pages/order-detail/OrderDetailPage';
 
 function App() {
     return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/payment-complete" element={<PaymentConfirmPage />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/ticketing/:id" element={<TicketingDetailPage />} />
+            <Route path="/ticketing/:id/order" element={<OrderDetailPage />} />
             <Route path="/" element={<MainPage />} />
         </Routes>
     );
