@@ -5,8 +5,8 @@ import { COLOR } from '../../color/color';
 export const ContainedButton = styled(Button)`
     height: 48px;
     box-shadow: 0 18px 30px rgba(68, 97, 242, 0.11);
-    background-color: ${COLOR.LIGHTER};
+    background-color: ${COLOR.DEFAULT};
     &:hover {
-        background-color: ${COLOR.DEFAULT};
+        background-color: ${COLOR.LIGHTER};
     }
 `;
