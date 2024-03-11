@@ -1,7 +1,6 @@
-import { useAccordionPreview } from './AccordionPreviewContext';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import React from 'react';
+import { useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers';
 import { Box, ThemeProvider, createTheme } from '@mui/material';
@@ -25,20 +24,22 @@ const theme = createTheme({
     },
 });
 
-const InputDate = () => {
-    const [value, setValue] = React.useState<Dayjs | null>(dayjs('2022-04-17'));
+interface InputDateProps {
+    date: Dayjs | null;
+    setDate: React.Dispatch<React.SetStateAction<Dayjs>>;
+}
 
-    const { setPreview } = useAccordionPreview();
-
+const InputDate = ({ date, setDate }: InputDateProps) => {
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ ...centerFlexStyle }}>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
-                        value={value}
-                        onChange={newValue => {
-                            setValue(newValue);
-                            setPreview(newValue ? newValue.format('YYYY-MM-DD') : '');
+                        value={date}
+                        onChange={newDate => {
+                            if (newDate != null) {
+                                setDate(newDate);
+                            }
                         }}
                     />
                 </LocalizationProvider>

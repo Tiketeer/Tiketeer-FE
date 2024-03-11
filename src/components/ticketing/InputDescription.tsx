@@ -1,11 +1,12 @@
 import { TextField } from '@mui/material';
 
-import { useAccordionPreview } from './AccordionPreviewContext';
-const InputDescription = () => {
-    const { setPreview } = useAccordionPreview();
+interface InputDescriptionProps {
+    setDescription: React.Dispatch<React.SetStateAction<string>>;
+}
 
+const InputDescription = ({ setDescription }: InputDescriptionProps) => {
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setPreview(event.target.value);
+        setDescription(event.target.value);
     };
 
     return (
