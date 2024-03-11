@@ -4,7 +4,6 @@ import { MYPAGE_PATH, MyPagePathType } from 'components/mypage/constant';
 import MyPageSideBar from 'components/mypage/side-bar/Sidebar';
 import PageFooter from 'components/page-footer/PageFooter';
 import PageHeader from 'components/page-header/PageHeader';
-import { useState } from 'react';
 
 const MyPageContainer = styled.div`
     width: 100vw;

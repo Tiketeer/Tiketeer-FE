@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-import MyPageMainContent from './main/MyPageMainContent';
+import MyPageChangeEmailContent from './change-email/MyPageChangeEmailContent';
 import MyPageChangePwdContent from './change-password/MyPageChangePwdContent';
 import { MYPAGE_PATH, MyPagePathType } from './constant';
-import MyPageChangeEmailContent from './change-email/MyPageChangeEmailContent';
+import MyPageMainContent from './main/MyPageMainContent';
+import MyPagePurchasesContent from './purchases/MyPagePurchasesContent';
 
 const myPageContentWrapperPadding = 5;
 
@@ -23,6 +24,8 @@ const MyPageContentWrapper = (props: { path: MyPagePathType }) => {
                 <MyPageChangePwdContent />
             ) : path === MYPAGE_PATH.CHANGE_EMAIL ? (
                 <MyPageChangeEmailContent />
+            ) : path === MYPAGE_PATH.PURCHASE ? (
+                <MyPagePurchasesContent />
             ) : (
                 <></>
             )}
