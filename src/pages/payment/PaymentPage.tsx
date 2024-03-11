@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import CommonButton from 'components/button/CommonButton';
 import PageFooter from 'components/page-footer/PageFooter';
 import PageHeader from 'components/page-header/PageHeader';
 import {
@@ -12,7 +13,6 @@ import {
     Section,
     VerticalDivider,
 } from 'components/payment/Payment';
-import PaymentButton from 'components/payment/PaymentBtn';
 import PaymentMethod from 'components/payment/PaymentMethod';
 import TicketDetail from 'components/payment/TicketDetail';
 import { useState } from 'react';
@@ -21,6 +21,12 @@ export const RightSection = styled.section`
     display: flex;
     flex-direction: column;
     width: 25vw;
+`;
+
+export const PaymentButtonContainer = styled.div`
+    width: 184px;
+    height: 48px;
+    margin: 25px auto;
 `;
 
 const PaymentPage = () => {
@@ -49,7 +55,15 @@ const PaymentPage = () => {
                         <VerticalDivider />
                         <RightSection>
                             <TicketDetail />
-                            <PaymentButton text="Pay Now" />
+                            <PaymentButtonContainer>
+                                <CommonButton
+                                    text="Pay Now"
+                                    isFilled={true}
+                                    callback={() => {
+                                        alert('paying!');
+                                    }}
+                                />
+                            </PaymentButtonContainer>
                         </RightSection>
                     </Content>
                 </Section>
