@@ -32,10 +32,11 @@ const MyPagePurchasesContent = () => {
     const purchaseItemList: PurchaseItemType[] = [1, 2, 3, 4, 5].map(day => {
         return {
             title: '워터밤 서울 2024 (WATERBOMB SEOUL 2024))',
-            date: `2024.07.${day.toString().padStart(2, '0')} 13:00`,
+            eventTime: `2024.07.${day.toString().padStart(2, '0')} 13:00`,
             ticketType: 'Paket VIP',
             numOfTicket: 2,
-            cost: 742000,
+            price: 742000,
+            purchaseId: 'abcd1234',
         };
     });
     return (

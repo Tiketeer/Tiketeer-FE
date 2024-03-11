@@ -1,8 +1,9 @@
 export type PurchaseItemType = {
     title: string;
-    date: string;
+    eventTime: string;
     ticketType: string;
     numOfTicket: number;
-    cost: number;
+    price: number;
     imgUrl?: string;
+    purchaseId: string;
 };
