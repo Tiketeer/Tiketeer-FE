@@ -14,8 +14,19 @@ import {
 } from 'components/payment/Payment';
 import TicketDetail from 'components/payment/TicketDetail';
 import { RightSection } from 'pages/payment/PaymentPage';
+import { paymentEventDetail } from 'type/payment';
 
 const OrderDetailPage = () => {
+    const data: paymentEventDetail = {
+        eventTime: 'September 22, 2021 · 20.00 - 21.56 WIB',
+        location: 'Parkiran Utama Mall @ Alam Sutera',
+        title: 'Drive In Senja: Back to the Future',
+        price: 450000,
+        numOfTicket: 2,
+        imgUrl: 'https://cdn.builder.io/api/v1/image/assets/TEMP/d89337253b3e18f5903cf373d3443d390807ae6f16a8a45665b63c754f65e997?apiKey=c046a1fbbdc64c33bd7372e3519527dd&',
+        ticketType: 'Gold Ticket',
+    };
+
     return (
         <PageWrapper>
             <PageHeader isLogined={true} />
@@ -35,16 +46,7 @@ const OrderDetailPage = () => {
                         <EmailVerificationAndTicketQuantitySelector />
                         <VerticalDivider />
                         <RightSection>
-                            <TicketDetail />
-                            {/* <PaymentButtonContainer>
-                                <CommonButton
-                                    text="Pay Now"
-                                    isFilled={true}
-                                    callback={() => {
-                                        alert('paying!');
-                                    }}
-                                />
-                            </PaymentButtonContainer> */}
+                            <TicketDetail data={data} />
                         </RightSection>
                     </Content>
                 </Section>
