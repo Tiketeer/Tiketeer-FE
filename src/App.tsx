@@ -26,6 +26,10 @@ function App() {
                 path="/mypage/purchases"
                 element={<MyPage path={MYPAGE_PATH.PURCHASE} />}
             ></Route>
+            <Route
+                path="/mypage/purchase/detail/:purchase_id"
+                element={<MyPage path={MYPAGE_PATH.PURCHASE_DETAIL} />}
+            />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/payment-complete" element={<PaymentConfirmPage />} />
             <Route path="/payment" element={<PaymentPage />} />
