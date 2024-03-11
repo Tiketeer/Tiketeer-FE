@@ -32,6 +32,7 @@ const PurchaseRowContentContainer = styled.div`
     height: 100%;
     gap: 2px;
     padding-left: 10px;
+    box-sizing: border-box;
 `;
 
 const PurchaseRowMetadataContainer = styled.div`
@@ -70,6 +71,7 @@ const PurchaseRowPriceContainer = styled.div`
     font-family: Abhaya Libre;
     font-size: 24px;
     font-weight: bold;
+    box-sizing: border-box;
 `;
 
 const PurchaseRow = (props: { purchaseItem: PurchaseItemType }) => {
