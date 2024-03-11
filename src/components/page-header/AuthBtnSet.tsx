@@ -4,16 +4,17 @@ import AuthButton from './AuthButton';
 import { CSSProperties } from 'react';
 import { COLOR } from 'color/color';
 
-export const btnSetPadding = 25;
+const btnSetPadding = 20;
 
-export const PageHeaderAuthBtnSetContainer = styled.div`
+const PageHeaderAuthBtnSetContainer = styled.div`
     width: 216px;
-    height: ${100 - 2 * btnSetPadding}%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: end;
-    padding: ${btnSetPadding}% 0%;
+    padding: ${btnSetPadding}px 0px;
+    box-sizing: border-box;
     gap: 35px;
 `;
 
