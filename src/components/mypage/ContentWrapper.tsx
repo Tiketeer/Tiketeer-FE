@@ -5,6 +5,7 @@ import { MYPAGE_PATH, MyPagePathType } from './constant';
 import MyPageMainContent from './main/MyPageMainContent';
 import MyPagePurchaseDetailContent from './purchase-detail/MyPagePurchaseDetailContent';
 import MyPagePurchasesContent from './purchases/MyPagePurchasesContent';
+import MyPageSalesContent from './sales/MyPageSalesContent';
 
 const myPageContentWrapperPadding = 5;
 
@@ -29,6 +30,8 @@ const MyPageContentWrapper = (props: { path: MyPagePathType }) => {
                 <MyPagePurchasesContent />
             ) : path === MYPAGE_PATH.PURCHASE_DETAIL ? (
                 <MyPagePurchaseDetailContent />
+            ) : path === MYPAGE_PATH.SALE ? (
+                <MyPageSalesContent />
             ) : (
                 <></>
             )}
