@@ -8,6 +8,7 @@ import PaymentPage from 'pages/payment/PaymentPage';
 import TicketingDetailPage from 'pages/ticketing-detail/TicketingDetailPage';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import TicketRegisterPage from 'pages/ticketing/TicketingRegisterPage';
 import OrderDetailPage from 'pages/order-detail/OrderDetailPage';
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route path="/ticketing/:id" element={<TicketingDetailPage />} />
             <Route path="/ticketing/:id/order" element={<OrderDetailPage />} />
             <Route path="/" element={<MainPage />} />
+            <Route path="/ticketing/register" element={<TicketRegisterPage />} />
         </Routes>
     );
 }
