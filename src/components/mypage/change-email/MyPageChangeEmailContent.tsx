@@ -49,6 +49,7 @@ const InputEmailElement = (props: { id: string; title: string; onChange: ChangeE
                 type="email"
                 autoComplete="current-password"
                 variant="standard"
+                style={{ width: '400px' }}
                 onChange={onChange}
             />
         </InputEmailElementContainer>

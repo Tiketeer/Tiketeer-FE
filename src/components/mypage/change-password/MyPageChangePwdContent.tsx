@@ -49,6 +49,7 @@ const InputPwdElement = (props: { id: string; title: string; onChange: ChangeEve
                 type="password"
                 autoComplete="current-password"
                 variant="standard"
+                style={{ width: '400px' }}
                 onChange={onChange}
             />
         </InputPwdElementContainer>
