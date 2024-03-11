@@ -11,9 +11,7 @@ const TicketingRegisterContainer = styled.div`
     align-items: center;
     flex-direction: column;
     width: 50vw;
-    heigh: 100vh;
     margin: 0 auto;
-    border: 1px solid;
     gap: 20px;
 `;
 
@@ -23,12 +21,12 @@ const TicketingRegisterPageContainer = styled.div`
     align-items: center;
     flex-direction: column;
     width: 100vw;
-    height: 100vh;
 `;
 
 const HeaderText = styled.div`
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 600;
+    padding: 30px;
     color: ${COLOR.DEFAULT};
 `;
 
@@ -37,7 +35,7 @@ const TicketingRegisterPage = () => {
         <TicketingRegisterPageContainer>
             <PageHeader isLogined />
             <TicketingRegisterContainer>
-                <HeaderText>새로운 티케팅 등록</HeaderText>
+                <HeaderText>새로운 티케팅 등록하기</HeaderText>
                 <TicketingRegister />
                 <ContainedButton
                     style={{ margin: '20px', fontSize: 14, color: 'white', width: '20%' }}
