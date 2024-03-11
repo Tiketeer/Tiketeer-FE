@@ -7,12 +7,12 @@ const footerPadding = 5;
 export const PageFooterWrapperContainer = styled.div`
     display: flex;
     flex-direction: row;
-    width: ${100 - 2 * footerPadding}%;
-    height: 100px;
+    width: 100%;
+    height: 10vh;
     align-items: center;
     justify-content: space-between;
     padding: 0% ${footerPadding}%;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.26);
+    box-sizing: border-box;
     background: linear-gradient(
         to bottom,
         ${COLOR.DARKER} 14%,

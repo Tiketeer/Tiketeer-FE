@@ -1,18 +1,18 @@
 import { Button, SxProps, Theme } from '@mui/material';
 import { COLOR } from 'color/color';
 
-const AuthButton = (props: {
-    text?: string;
-    isFilled?: boolean;
-    callback?: () => Promise<void>;
+const CommonButton = (props: {
+    text: string;
+    isFilled: boolean;
+    callback?: () => Promise<void> | void;
 }) => {
-    const { text = '', isFilled = true, callback = async () => {} } = props;
+    const { text, isFilled, callback = async () => {} } = props;
     const buttonStyle: SxProps<Theme> = {
         height: '100%',
-        width: '96px',
+        width: '100%',
         backgroundColor: isFilled ? COLOR.DEFAULT : 'white',
         color: isFilled ? 'white' : COLOR.DEFAULT,
-        fontSize: 14,
+        fontSize: 'auto',
         fontWeight: 'medium',
         fontFamily: 'General Sans',
         textTransform: 'none',
@@ -27,4 +27,4 @@ const AuthButton = (props: {
     );
 };
 
-export default AuthButton;
+export default CommonButton;
