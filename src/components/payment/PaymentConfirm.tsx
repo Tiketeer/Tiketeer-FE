@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { COLOR } from 'color/color';
 
 export const PageWrapper = styled.div`
     min-height: 100vh;
@@ -21,7 +22,7 @@ export const ConfirmationMessageSection = styled.section`
     flex-direction: column;
     align-items: center;
     font-size: 16px;
-    color: var(--Brand-Primary-Default, #4f4cee);
+    color: ${COLOR.DEFAULT};
     font-weight: 500;
     white-space: nowrap;
 `;

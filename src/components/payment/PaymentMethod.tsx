@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Radio } from '@mui/material';
+import { COLOR } from 'color/color';
 import { ReactElement } from 'react';
 import SectionTitle from './SectionTitle';
 
@@ -20,7 +21,7 @@ export const OptionStyled = styled.div`
 export const OptionHighlightStyled = styled(OptionStyled)`
     margin-top: 25px;
     box-shadow: 6px 8px 0px 0px #0022ba;
-    border: 2px solid #4f4cee;
+    border: 2px solid ${COLOR.DEFAULT};
     cursor: pointer;
     box-sizing: border-box;
 `;
@@ -32,7 +33,7 @@ export const OptionDetails = styled.div`
 `;
 
 export const OptionLabel = styled.div`
-    color: ${props => (props.defaultChecked ? '#4f4cee' : '#1b1b25')};
+    color: ${props => (props.defaultChecked ? '${COLOR.DEFAULT}' : '#1b1b25')};
     font-size: 14px;
     font-weight: 500;
 `;

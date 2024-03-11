@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { COLOR } from 'color/color';
 
 export const PageWrapper = styled.div`
     min-height: 100vh;
@@ -23,7 +24,7 @@ export const PaymentBackButton = styled.button`
     justify-content: center;
     align-items: center;
     border-radius: 5.26px;
-    border: 1.5px solid #4f4cee;
+    border: 1.5px solid ${COLOR.DEFAULT};
     background-color: #fff;
     padding: 0 7px;
     margin: 88px 20px 0px 88px;
