@@ -141,7 +141,7 @@ const TicketDetail = (props: { data: paymentEventDetail }) => {
                 <Item>
                     <ItemTitle>Ticket Price</ItemTitle>
                     <ItemDetails>
-                        {data.numOfTicket} x {data.price}₩
+                        {data.numOfTicket} x {data.price.toLocaleString()}₩
                     </ItemDetails>
                 </Item>
                 <Item>
@@ -155,7 +155,7 @@ const TicketDetail = (props: { data: paymentEventDetail }) => {
                 <HorizontalDivider />
                 <Total>
                     <TotalTitle>Total</TotalTitle>
-                    <TotalAmount>{data.numOfTicket * data.price}₩</TotalAmount>
+                    <TotalAmount>{(data.numOfTicket * data.price).toLocaleString()}₩</TotalAmount>
                 </Total>
             </OrderSummary>
         </DetailsSection>
