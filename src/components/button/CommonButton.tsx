@@ -4,15 +4,16 @@ import { COLOR } from 'color/color';
 const CommonButton = (props: {
     text: string;
     isFilled: boolean;
+    size?: string;
     callback?: () => Promise<void> | void;
 }) => {
-    const { text, isFilled, callback = async () => {} } = props;
+    const { text, isFilled, size, callback = async () => {} } = props;
     const buttonStyle: SxProps<Theme> = {
         height: '100%',
         width: '100%',
         backgroundColor: isFilled ? COLOR.DEFAULT : 'white',
         color: isFilled ? 'white' : COLOR.DEFAULT,
-        fontSize: 'auto',
+        fontSize: size ?? 'auto',
         fontWeight: 'medium',
         fontFamily: 'General Sans',
         textTransform: 'none',

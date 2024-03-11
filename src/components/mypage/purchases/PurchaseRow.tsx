@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { COLOR } from 'color/color';
+import { useNavigate } from 'react-router-dom';
 import defaultImage from '../../../assets/image/login_bg.png';
 import { PurchaseItemType } from './type';
 
@@ -73,11 +74,20 @@ const PurchaseRowPriceContainer = styled.div`
 
 const PurchaseRow = (props: { purchaseItem: PurchaseItemType }) => {
     const { purchaseItem } = props;
-    const { title, date, ticketType, numOfTicket, cost, imgUrl = defaultImage } = purchaseItem;
+    const {
+        title,
+        eventTime,
+        ticketType,
+        numOfTicket,
+        price,
+        imgUrl = defaultImage,
+        purchaseId,
+    } = purchaseItem;
+    const navigate = useNavigate();
     return (
         <PurchaseRowContainer
             onClick={() => {
-                console.log(title + 'Click!');
+                navigate(`/mypage/purchase/detail/${purchaseId}`);
             }}
         >
             <ImgWrapperContainer src={imgUrl} />
@@ -85,13 +95,15 @@ const PurchaseRow = (props: { purchaseItem: PurchaseItemType }) => {
                 <PurchaseRowMetadataContainer>
                     <PurchaseRowTitleContainer>{title}</PurchaseRowTitleContainer>
                     <PurchaseRowMetadataElementContainer>
-                        {date}
+                        {eventTime}
                     </PurchaseRowMetadataElementContainer>
                     <PurchaseRowMetadataElementContainer>
                         {ticketType} x {numOfTicket}
                     </PurchaseRowMetadataElementContainer>
                 </PurchaseRowMetadataContainer>
-                <PurchaseRowPriceContainer>{cost.toLocaleString()}W</PurchaseRowPriceContainer>
+                <PurchaseRowPriceContainer>
+                    {(price * numOfTicket).toLocaleString()}W
+                </PurchaseRowPriceContainer>
             </PurchaseRowContentContainer>
         </PurchaseRowContainer>
     );
