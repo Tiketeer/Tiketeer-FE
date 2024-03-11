@@ -1,12 +1,11 @@
 import styled from '@emotion/styled';
+import { COLOR } from 'color/color';
 import Image1 from '../../assets/panel/pablita-251-1.svg';
 import Image2 from '../../assets/panel/pablita-673-1.svg';
 import Image3 from '../../assets/panel/pablita-693.svg';
-import bulb from '../../assets/panel/pablita-794-1.svg';
 import man from '../../assets/panel/pablita-man-15-1.svg';
 import woman1 from '../../assets/panel/pablita-woman-101.svg';
 import woman2 from '../../assets/panel/pablita-woman-16-1.svg';
-import { COLOR } from 'color/color';
 
 export const PanelContainer = styled.div`
     display: flex;
