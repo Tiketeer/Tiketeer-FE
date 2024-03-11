@@ -68,7 +68,7 @@ const TicketingDetailPage = () => {
                 <TicketingBodyBox>
                     <TicketingInfo ticketing={info} />
                     {isOpen ? <TicketingReserve /> : <TicketingOpenInfo />}
-                    {isSeller ? (
+                    {!isOpen && isSeller ? (
                         <ButtonContainer>
                             <ButtonBox>
                                 <CommonButton text="수정" isFilled={true}></CommonButton>
