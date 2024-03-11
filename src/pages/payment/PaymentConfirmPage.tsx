@@ -1,22 +1,22 @@
 import PageFooter from 'components/page-footer/PageFooter';
 import PageHeader from 'components/page-header/PageHeader';
 import {
-    PageWrapper,
-    MainContent,
     ConfirmationMessage,
-    TicketImage,
+    ConfirmationMessageSection,
     // TicketInfo,
     EmailAddress,
+    HelpMessage,
+    MainContent,
+    PageWrapper,
     // HelpSection,
     ResendButton,
-    SupportContact,
-    SupportIcon,
-    HelpMessage,
     ResendMessage,
     ResendMessageContainer,
     SentToMessage,
+    SupportContact,
     SupportEmail,
-    ConfirmationMessageSection,
+    SupportIcon,
+    TicketImage,
 } from 'components/payment/PaymentConfirm';
 import paymentConfirmImg from '../../assets/image/payment_confirm.png';
 
