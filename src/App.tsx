@@ -19,6 +19,10 @@ function App() {
                 path="/mypage/change/email"
                 element={<MyPage path={MYPAGE_PATH.CHANGE_EMAIL} />}
             ></Route>
+            <Route
+                path="/mypage/purchases"
+                element={<MyPage path={MYPAGE_PATH.PURCHASE} />}
+            ></Route>
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/" element={<MainPage />} />
         </Routes>
