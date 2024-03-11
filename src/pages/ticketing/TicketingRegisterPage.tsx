@@ -14,6 +14,7 @@ const TicketingRegisterContainer = styled.div`
     heigh: 100vh;
     margin: 0 auto;
     border: 1px solid;
+    gap: 20px;
 `;
 
 const TicketingRegisterPageContainer = styled.div`
