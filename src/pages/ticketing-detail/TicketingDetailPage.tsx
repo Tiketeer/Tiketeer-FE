@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLOR } from 'color/color';
 import CancelButton from 'components/button/CancelButton';
 import CommonButton from 'components/button/CommonButton';
 import PageFooter from 'components/page-footer/PageFooter';

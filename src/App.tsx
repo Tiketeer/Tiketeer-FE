@@ -1,11 +1,13 @@
+import { MYPAGE_PATH } from 'components/mypage/constant';
+import EmailConfirmPage from 'pages/confirm/EmailConfirmPage';
+import LoginPage from 'pages/login/LoginPage';
+import MainPage from 'pages/main/MainPage';
+import MyPage from 'pages/mypage/MyPage';
+import PaymentConfirmPage from 'pages/payment/PaymentConfirmPage';
+import PaymentPage from 'pages/payment/PaymentPage';
+import TicketingDetailPage from 'pages/ticketing-detail/TicketingDetailPage';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import LoginPage from 'pages/login/LoginPage';
-import EmailConfirmPage from 'pages/confirm/EmailConfirmPage';
-import MyPage from 'pages/mypage/MyPage';
-import { MYPAGE_PATH } from 'components/mypage/constant';
-import MainPage from 'pages/main/MainPage';
-import TicketingDetailPage from 'pages/ticketing-detail/TicketingDetailPage';
 
 function App() {
     return (
@@ -21,6 +23,8 @@ function App() {
                 element={<MyPage path={MYPAGE_PATH.CHANGE_EMAIL} />}
             ></Route>
             <Route path="/mypage" element={<MyPage />} />
+            <Route path="/payment-complete" element={<PaymentConfirmPage />} />
+            <Route path="/payment" element={<PaymentPage />} />
             <Route path="/ticketing/:id" element={<TicketingDetailPage />} />
             <Route path="/" element={<MainPage />} />
         </Routes>
