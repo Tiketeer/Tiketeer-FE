@@ -1,5 +1,5 @@
 export interface ticketing {
-    imgUrl: string;
+    imgUrl?: string;
     eventTime: string;
     title: string;
     price: number;
