@@ -4,15 +4,18 @@ import { COLOR } from 'color/color';
 const CategoryList = ['Concerts', 'Arts', 'Conference', 'Movies', 'International'];
 
 const CategoryContainer = styled.div`
+    max-width: 45vw;
     display: flex;
     flex-direction: row;
-    gap: 35px;
+    gap: 2vw;
     justify-content: center;
-    padding: 16px 12px;
+    padding: 1vh 1vw;
+    box-sizing: border-box;
 `;
 
 const CategoryElementContainer = styled.div`
     padding: 10px;
+    box-sizing: border-box;
 `;
 
 const CategoryElementBtn = styled.button`

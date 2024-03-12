@@ -8,7 +8,7 @@ const headerPadding = 5;
 
 const PageHeaderWrapperContainer = styled.div`
     width: 100vw;
-    height: 73px;
+    height: 9vh;
     align-items: center;
     padding: 0% ${headerPadding}%;
     box-sizing: border-box;
@@ -20,9 +20,9 @@ const PageHeaderContainer = styled.div`
     height: 100%;
     display: flex;
     flex-direction: row;
-    gap: 183px;
+    gap: 20%;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 `;
 
 const LogoContainer = styled.div`

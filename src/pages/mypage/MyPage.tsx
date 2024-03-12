@@ -7,7 +7,7 @@ import PageHeader from 'components/page-header/PageHeader';
 
 const MyPageContainer = styled.div`
     width: 100vw;
-    height: 100vh;
+    height: max-content;
     display: flex;
     flex-direction: column;
 `;

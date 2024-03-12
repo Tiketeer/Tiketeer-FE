@@ -9,7 +9,7 @@ const AuthButton = (props: {
     const { text = '', isFilled = true, callback = async () => {} } = props;
     const buttonStyle: SxProps<Theme> = {
         height: '100%',
-        width: '96px',
+        width: '4vw',
         backgroundColor: isFilled ? COLOR.DEFAULT : 'white',
         color: isFilled ? 'white' : COLOR.DEFAULT,
         fontSize: 14,

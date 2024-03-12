@@ -1,21 +1,19 @@
 import styled from '@emotion/styled';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import AuthButton from './AuthButton';
-import { CSSProperties } from 'react';
 import { COLOR } from 'color/color';
-
-const btnSetPadding = 20;
+import { CSSProperties } from 'react';
+import AuthButton from './AuthButton';
 
 const PageHeaderAuthBtnSetContainer = styled.div`
-    width: 216px;
+    width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-items: center;
     justify-content: end;
-    padding: ${btnSetPadding}px 0px;
+    padding: 2.5vh 0px;
     box-sizing: border-box;
-    gap: 35px;
+    gap: 2vw;
 `;
 
 const ProfileStyle: CSSProperties = {
@@ -30,13 +28,13 @@ const PageHeaderAuthBtnSet = (props: { isLogined: boolean }) => {
         <PageHeaderAuthBtnSetContainer>
             {isLogined ? (
                 <>
-                    <AuthButton text="Logout" isFilled={true} />
                     <AccountCircleIcon style={ProfileStyle}></AccountCircleIcon>
+                    <AuthButton text="Logout" isFilled={true} />
                 </>
             ) : (
                 <>
-                    <AuthButton text="Login" isFilled={false} />
                     <AuthButton text="Register" isFilled={true} />
+                    <AuthButton text="Login" isFilled={false} />
                 </>
             )}
         </PageHeaderAuthBtnSetContainer>
