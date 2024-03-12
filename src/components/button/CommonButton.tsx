@@ -11,6 +11,8 @@ const CommonButton = (props: {
     const buttonStyle: SxProps<Theme> = {
         height: '100%',
         width: '100%',
+        border: 1,
+        borderColor: COLOR.DEFAULT,
         backgroundColor: isFilled ? COLOR.DEFAULT : 'white',
         color: isFilled ? 'white' : COLOR.DEFAULT,
         fontSize: size ?? 'auto',

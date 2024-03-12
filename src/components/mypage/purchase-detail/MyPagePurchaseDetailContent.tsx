@@ -4,6 +4,8 @@ import TicketDetail from 'components/payment/TicketDetail';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { paymentEventDetail } from 'type/payment';
+import { refundTicketInfo } from 'type/refund';
+import TicketCancellation from './PurchaseRefundModal';
 
 const PurchaseDetailContentContainer = styled.div`
     display: flex;
@@ -52,6 +54,19 @@ const MyPagePurchaseDetailContent = () => {
         ticketType: 'Gold Ticket',
     };
 
+    const tickets: refundTicketInfo[] = [
+        'ticket1234',
+        'ticket1235',
+        'ticket1424',
+        'ticket1324',
+    ].map(id => ({
+        id,
+        title: data.title,
+        eventTime: data.eventTime,
+        ticketType: data.ticketType,
+        price: data.price,
+    }));
+
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const open = () => {
@@ -78,6 +93,7 @@ const MyPagePurchaseDetailContent = () => {
                         }}
                     />
                     <CommonButton text="예매 취소" isFilled={false} size="16px" callback={open} />
+                    <TicketCancellation open={isOpen} onClose={close} tickets={tickets} />
                 </PurchaseDetailContentTicketButtonContainer>
             </PurcahseDetailContentTicketContainer>
         </PurchaseDetailContentContainer>
