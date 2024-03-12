@@ -1,11 +1,9 @@
-import { Typography } from '@mui/material';
-import { Accordion, AccordionSummary } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useState } from 'react';
+import { Accordion, AccordionSummary, Typography } from '@mui/material';
 
 export interface InputAccordionProps {
     tag: string;
-    preview?: string;
+    preview?: string | number;
     children?: React.ReactNode;
 }
 
