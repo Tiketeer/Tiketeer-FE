@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { ticketing } from 'type/ticketing';
-import { getDate, getMonthAbbreviation } from 'util/time';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { Ticketing as TicketingType } from 'type/ticketing';
+import { getDate, getMonthAbbreviation } from 'util/time';
 
 export const Ticketing = styled.div`
     display: flex;
@@ -61,7 +61,7 @@ export const TicketingLocation = styled.div`
 
 export const TicketingLocationBody = styled.div``;
 
-const TicketingBox = (props: { ticketing: ticketing }) => {
+const TicketingBox = (props: { ticketing: TicketingType }) => {
     const { ticketing } = props;
     const month = getMonthAbbreviation(ticketing.eventTime);
     const date = getDate(ticketing.eventTime);
@@ -69,7 +69,7 @@ const TicketingBox = (props: { ticketing: ticketing }) => {
     return (
         <Ticketing>
             <ImageBox>
-                <Image src={ticketing.imgUrl} alt="No Iamge" />
+                <Image src="logo192.png" alt="No Iamge" />
             </ImageBox>
             <TicketingInfoBox>
                 <TicketingDate>

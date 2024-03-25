@@ -1,12 +1,17 @@
-export interface ticketing {
-    imgUrl?: string;
-    eventTime: string;
+export type Ticketing = {
+    ticketingId: string;
     title: string;
-    price: number;
     location: string;
-}
+    eventTime: string;
+    saleStart: string;
+    saleEnd: string;
+    remainedStock: number;
+    createdAt: string;
+    category: string;
+    runningMinutes: number;
+    price: number;
+};
 
-export interface ticketingDetail extends ticketing {
+export type TicketingDetail = Ticketing & {
     description: string;
-    runningTime: number;
-}
+};

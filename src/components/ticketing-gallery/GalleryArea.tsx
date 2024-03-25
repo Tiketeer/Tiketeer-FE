@@ -1,6 +1,6 @@
-import { ticketing } from 'type/ticketing';
-import TicketingBox from './TicketingBox';
 import styled from '@emotion/styled';
+import { Ticketing } from 'type/ticketing';
+import TicketingBox from './TicketingBox';
 
 export const Gallery = styled.div`
     display: flex;
@@ -9,7 +9,7 @@ export const Gallery = styled.div`
     flex-wrap: wrap;
 `;
 
-const GalleryArea = (props: { ticketings: ticketing[] }) => {
+const GalleryArea = (props: { ticketings: Ticketing[] }) => {
     const { ticketings } = props;
     return (
         <Gallery>
