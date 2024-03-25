@@ -7,7 +7,6 @@ import TicketingGallery from 'components/ticketing-gallery/TicketingGallery';
 import { useEffect, useState } from 'react';
 import { ApiResponseType } from 'type/response';
 import { Ticketing } from 'type/ticketing';
-import { getApiDomain } from 'util/domain';
 
 export const MainContainer = styled.div`
     width: 100vw;
@@ -29,11 +28,10 @@ const Blank = styled.div`
 
 const MainPage = () => {
     const [ticketings, setTicketings] = useState<Ticketing[]>([]);
-    const domain = getApiDomain();
     const path = '/api/ticketings';
     useEffect(() => {
         axios
-            .get<ApiResponseType<Ticketing[]>>(domain + path)
+            .get<ApiResponseType<Ticketing[]>>(path)
             .then(({ data }) => {
                 setTicketings(data.data);
             })
