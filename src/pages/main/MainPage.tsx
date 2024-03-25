@@ -1,9 +1,13 @@
 import styled from '@emotion/styled';
+import axios from 'axios';
 import ImagePanel from 'components/image-panel/ImagePanel';
 import PageFooter from 'components/page-footer/PageFooter';
 import PageHeader from 'components/page-header/PageHeader';
 import TicketingGallery from 'components/ticketing-gallery/TicketingGallery';
-import { ticketing } from 'type/ticketing';
+import { useEffect, useState } from 'react';
+import { ApiResponseType } from 'type/response';
+import { Ticketing } from 'type/ticketing';
+import { getApiDomain } from 'util/domain';
 
 export const MainContainer = styled.div`
     width: 100vw;
@@ -24,57 +28,21 @@ const Blank = styled.div`
 `;
 
 const MainPage = () => {
-    const ticketings: ticketing[] = [
-        {
-            eventTime: '2024-04-01 12:00:00',
-            location: 'The Icon, BSD',
-            title: 'Panic! at the Disco',
-            price: 450000,
-            imgUrl: 'logo192.png',
-        },
-        {
-            eventTime: '2024-11-02 13:00:00',
-            location: 'Ciputra Artpreneur',
-            title: 'Hamilton the Musical',
-            price: 1500000,
-            imgUrl: 'logo192.png',
-        },
-        {
-            eventTime: '2024-11-21 13:00:00',
-            location: 'Ciputra Artpreneur',
-            title: 'Hamilton the Musical',
-            price: 1500000,
-            imgUrl: 'logo192.png',
-        },
-        {
-            eventTime: '2024-11-02 13:00:00',
-            location: 'Ciputra Artpreneur',
-            title: 'Hamilton the Musical',
-            price: 1500000,
-            imgUrl: 'logo192.png',
-        },
-        {
-            eventTime: '2024-11-02 13:00:00',
-            location: 'Ciputra Artpreneur',
-            title: 'Hamilton the Musical',
-            price: 1500000,
-            imgUrl: 'logo192.png',
-        },
-        {
-            eventTime: '2024-11-02 13:00:00',
-            location: 'Ciputra Artpreneur',
-            title: 'Hamilton the Musical',
-            price: 1500000,
-            imgUrl: 'logo192.png',
-        },
-        {
-            eventTime: '2024-11-02 13:00:00',
-            location: 'Ciputra Artpreneur',
-            title: 'Hamilton the Musical',
-            price: 1500000,
-            imgUrl: 'logo192.png',
-        },
-    ];
+    const [ticketings, setTicketings] = useState<Ticketing[]>([]);
+    const domain = getApiDomain();
+    const path = '/api/ticketings';
+    useEffect(() => {
+        axios
+            .get<ApiResponseType<Ticketing[]>>(domain + path)
+            .then(({ data }) => {
+                setTicketings(data.data);
+            })
+            .catch(err => {
+                console.log(err);
+                setTicketings([]);
+            });
+    }, []);
+
     return (
         <MainContainer>
             <PageHeader isLogined={false} />
