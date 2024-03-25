@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { COLOR } from 'color/color';
 import { CSSProperties } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AuthButton from './AuthButton';
 
 const PageHeaderAuthBtnSetContainer = styled.div`
@@ -24,6 +25,7 @@ const ProfileStyle: CSSProperties = {
 
 const PageHeaderAuthBtnSet = (props: { isLogined: boolean }) => {
     const { isLogined } = props;
+    const navigate = useNavigate();
     return (
         <PageHeaderAuthBtnSetContainer>
             {isLogined ? (
@@ -33,8 +35,20 @@ const PageHeaderAuthBtnSet = (props: { isLogined: boolean }) => {
                 </>
             ) : (
                 <>
-                    <AuthButton text="Register" isFilled={true} />
-                    <AuthButton text="Login" isFilled={false} />
+                    <AuthButton
+                        text="Register"
+                        isFilled={true}
+                        callback={async () => {
+                            navigate('/login');
+                        }}
+                    />
+                    <AuthButton
+                        text="Login"
+                        isFilled={false}
+                        callback={async () => {
+                            navigate('/login');
+                        }}
+                    />
                 </>
             )}
         </PageHeaderAuthBtnSetContainer>
