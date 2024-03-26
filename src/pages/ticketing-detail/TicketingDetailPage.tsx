@@ -67,7 +67,7 @@ const TicketingDetailPage = () => {
 
     return (
         <TicketingDetailContainer>
-            <PageHeader isLogined={false} />
+            <PageHeader />
             <TicketingBodyContainer>
                 <Blank />
                 <TicketingBodyBox>

@@ -15,7 +15,7 @@ const CenteredContainer = styled.div`
 
 const Box = styled.div`
     width: 510px;
-    height: 50%;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,7 +51,7 @@ export default function EmailConfirmPage() {
         }
 
         axios
-            .post('/api/members/password', {
+            .put('/api/members/password', {
                 otp: otp,
                 newPassword: password,
             })

@@ -29,6 +29,7 @@ const Blank = styled.div`
 const MainPage = () => {
     const [ticketings, setTicketings] = useState<Ticketing[]>([]);
     const path = '/api/ticketings';
+
     useEffect(() => {
         axios
             .get<ApiResponseType<Ticketing[]>>(path)
@@ -43,7 +44,7 @@ const MainPage = () => {
 
     return (
         <MainContainer>
-            <PageHeader isLogined={false} />
+            <PageHeader />
             <ImagePanel />
             <TicketingContainer>
                 <Blank></Blank>
