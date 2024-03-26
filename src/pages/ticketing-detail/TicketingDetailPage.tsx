@@ -6,7 +6,7 @@ import PageHeader from 'components/page-header/PageHeader';
 import TicketingInfo from 'components/ticketing-info/TicketingInfo';
 import TicketingOpenInfo from 'components/ticketing-open-info/TicketingOpenInfo';
 import TicketingReserve from 'components/ticketing-reserve/TicketingReserve';
-import { ticketingDetail } from 'type/ticketing';
+import { TicketingDetail } from 'type/ticketing';
 
 export const TicketingDetailContainer = styled.div`
     width: 100vw;
@@ -45,15 +45,20 @@ const ButtonBox = styled.div`
 `;
 
 const TicketingDetailPage = () => {
-    const info: ticketingDetail = {
+    const info: TicketingDetail = {
+        ticketingId: 'ticketingId',
+        category: 'Music',
         eventTime: '2024-03-01 12:00:00',
         location: 'The Icon, BSD',
         title: 'Panic! at the Disco',
         price: 450000,
-        imgUrl: 'https://img.danawa.com/prod_img/500000/137/107/img/19107137_1.jpg?shrink=330:*&_v=20230222135917',
         description: `익사이팅한 음악과 퍼포먼스 그리고 워터파이팅이 더해진 새로운 차원의 경험 !
 놓칠 수 없는 최고의 워터 뮤직 페스티벌 워터밤 서울 2024`,
-        runningTime: 540,
+        runningMinutes: 540,
+        createdAt: new Date().toDateString(),
+        remainedStock: 100,
+        saleStart: '2024-03-01 12:00:00',
+        saleEnd: '2024-03-01 12:00:00',
     };
 
     const date = new Date(info.eventTime);
@@ -62,7 +67,7 @@ const TicketingDetailPage = () => {
 
     return (
         <TicketingDetailContainer>
-            <PageHeader isLogined={false} />
+            <PageHeader />
             <TicketingBodyContainer>
                 <Blank />
                 <TicketingBodyBox>

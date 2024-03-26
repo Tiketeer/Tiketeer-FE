@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { ticketingDetail } from 'type/ticketing';
+import { TicketingDetail as TicketingDetailType } from 'type/ticketing';
 import { getDate, getMonth } from 'util/time';
 
 const TicketingInfoBox = styled.div`
@@ -70,7 +70,7 @@ const TicketingLocation = styled.div`
     margin: 0px 5px 10px 0px;
 `;
 
-const TicketingInfo = (props: { ticketing: ticketingDetail }) => {
+const TicketingInfo = (props: { ticketing: TicketingDetailType }) => {
     const { ticketing } = props;
     const date = new Date(ticketing.eventTime);
     const eventTime = [
@@ -82,7 +82,10 @@ const TicketingInfo = (props: { ticketing: ticketingDetail }) => {
     return (
         <TicketingInfoBox>
             <TicketingImageBox>
-                <TicketingImage src={ticketing.imgUrl} alt="No image" />
+                <TicketingImage
+                    src="https://img.danawa.com/prod_img/500000/137/107/img/19107137_1.jpg?shrink=330:*&_v=20230222135917"
+                    alt="No image"
+                />
             </TicketingImageBox>
             <TicketingDetail>
                 <TicketingTitleAndDescription>
@@ -91,7 +94,9 @@ const TicketingInfo = (props: { ticketing: ticketingDetail }) => {
                 </TicketingTitleAndDescription>
                 <TicketingDateAndLocation>
                     <TicketingEventTime>공연기간 {eventTime}</TicketingEventTime>
-                    <TicketingRunningTime>관람시간 {ticketing.runningTime}분</TicketingRunningTime>
+                    <TicketingRunningTime>
+                        관람시간 {ticketing.runningMinutes}분
+                    </TicketingRunningTime>
                     <TicketingLocation>공연장 {ticketing.location}</TicketingLocation>
                 </TicketingDateAndLocation>
             </TicketingDetail>

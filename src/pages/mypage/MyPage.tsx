@@ -26,7 +26,7 @@ const MyPage = (props: { path?: MyPagePathType }) => {
     const { path = MYPAGE_PATH.MAIN } = props;
     return (
         <MyPageContainer>
-            <PageHeader isLogined={true} />
+            <PageHeader />
             <MyPageBodyContainer>
                 <MyPageSideBar path={path} />
                 <MyPageContentWrapper path={path} />

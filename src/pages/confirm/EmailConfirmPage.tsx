@@ -1,8 +1,11 @@
 import styled from '@emotion/styled';
-import React from 'react';
-import inboxImage from '../../assets/image/inbox.png';
+import axios from 'axios';
 import { ContainedButton } from 'components/button/ButtonStyle';
-
+import { passwordRegex } from 'const/passwordRegex';
+import { useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import inboxImage from '../../assets/image/inbox.png';
+import ConfirmPasswordForm from '../../components/confirm/confirm-password/ConfirmPasswordForm';
 const CenteredContainer = styled.div`
     display: flex;
     justify-content: center;
@@ -12,7 +15,7 @@ const CenteredContainer = styled.div`
 
 const Box = styled.div`
     width: 510px;
-    height: 670px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,6 +29,39 @@ const InboxImage = styled.div`
 `;
 
 export default function EmailConfirmPage() {
+    const [password, setPassword] = useState<string>('');
+    const [confirmPassword, setConfirmPassword] = useState<string>('');
+    const [error, setError] = useState('');
+    const [confirmError, setConfirmError] = useState('');
+    const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
+
+    const handleSubmit = (event: { preventDefault: () => void }) => {
+        event.preventDefault();
+        const otp = searchParams.get('otp');
+
+        if (
+            !password ||
+            !confirmPassword ||
+            !passwordRegex.test(password) ||
+            !passwordRegex.test(confirmPassword) ||
+            password !== confirmPassword
+        ) {
+            return;
+        }
+
+        axios
+            .put('/api/members/password', {
+                otp: otp,
+                newPassword: password,
+            })
+            .then(() => {
+                navigate('/');
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
     return (
         <CenteredContainer>
             <Box>
@@ -41,11 +77,26 @@ export default function EmailConfirmPage() {
                         fontWeight: '500',
                         color: '#3F3E3E',
                         fontSize: '15',
+                        textAlign: 'center',
                     }}
                 >
-                    To start using Tiketeer, just click the below button
+                    To start using Tiketeer, just set your password and click the button below
                 </span>
-                <ContainedButton style={{ margin: '20px', fontSize: 14 }} variant="contained">
+                <ConfirmPasswordForm
+                    password={password}
+                    setPassword={setPassword}
+                    confirmPassword={confirmPassword}
+                    setConfirmPassword={setConfirmPassword}
+                    error={error}
+                    setError={setError}
+                    confirmError={confirmError}
+                    setConfirmError={setConfirmError}
+                />
+                <ContainedButton
+                    style={{ margin: '20px', fontSize: 14 }}
+                    variant="contained"
+                    onClick={handleSubmit}
+                >
                     Confirm your Email
                 </ContainedButton>
             </Box>

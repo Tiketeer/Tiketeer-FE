@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { COLOR } from 'color/color';
 import { PROJECT_NAME } from 'constant';
-import CategoryPanel from './CategoryPanel';
 import PageHeaderAuthBtnSet from './AuthBtnSet';
+import CategoryPanel from './CategoryPanel';
 
 const headerPadding = 5;
 
@@ -33,14 +33,13 @@ const LogoContainer = styled.div`
     color: ${COLOR.DEFAULT};
 `;
 
-const PageHeader = (props: { isLogined: boolean }) => {
-    const { isLogined = true } = props;
+const PageHeader = () => {
     return (
         <PageHeaderWrapperContainer>
             <PageHeaderContainer>
                 <LogoContainer>{PROJECT_NAME}</LogoContainer>
                 <CategoryPanel />
-                <PageHeaderAuthBtnSet isLogined={isLogined}></PageHeaderAuthBtnSet>
+                <PageHeaderAuthBtnSet></PageHeaderAuthBtnSet>
             </PageHeaderContainer>
         </PageHeaderWrapperContainer>
     );

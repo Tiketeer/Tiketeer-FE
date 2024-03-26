@@ -20,6 +20,7 @@
         "react-dropzone": "^14.2.3",
         "react-router-dom": "^6.22.2",
         "react-scripts": "5.0.1",
+        "recoil": "^0.7.7",
         "typescript": "^4.9.5",
         "web-vitals": "^2.1.4"
     },
@@ -59,5 +60,6 @@
         "eslint-plugin-unused-imports": "^2.0.0",
         "flow-babel-webpack-plugin": "^1.1.1",
         "prettier": "^3.2.5"
-    }
+    },
+    "proxy": "http://localhost:4000"
 }

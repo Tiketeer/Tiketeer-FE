@@ -45,7 +45,7 @@ const PaymentPage = () => {
 
     return (
         <PageWrapper>
-            <PageHeader isLogined={true} />
+            <PageHeader />
             <MainContent>
                 <PaymentBackButton>
                     <PaymentIcon
