@@ -4,7 +4,7 @@ import axios from 'axios';
 import { ContainedButton } from 'components/button/ButtonStyle';
 import dayjs from 'dayjs';
 import createError from 'http-errors';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import InputAccordion from './InputAccordion';
 import InputEventDate from './InputDate';
@@ -36,8 +36,10 @@ const TicketingRegisterContent = () => {
     const [location, setLocation] = useState('');
     const [price, setPrice] = useState(0);
     const [quantity, setQuantity] = useState(0);
-    const [saleStartDate, setSaleStartDate] = useState(dayjs());
-    const [saleEndDate, setSaleEndDate] = useState(dayjs().add(1, 'day'));
+    const [saleStartDate, setSaleStartDate] = useState(
+        dayjs().add(1, 'day').set('h', 9).set('m', 0),
+    );
+    const [saleEndDate, setSaleEndDate] = useState(dayjs().add(2, 'day').set('h', 18).set('m', 0));
     const [thumbnail, setThumbnail] = useState<FileWithPreview | null>(null);
 
     const [isValidTitle, setTitleValidation] = useState(true);
@@ -47,7 +49,15 @@ const TicketingRegisterContent = () => {
     const [isValidQuantity, setQuantityValidation] = useState(true);
     const [isValidSalePeriod, setSalePeriodValidation] = useState(true);
 
+    const [eventTime, setEventTime] = useState(
+        eventDate.set('h', startTime.get('h')).set('m', startTime.get('m')),
+    );
+
     const inputRef = useRef<HTMLInputElement[]>([]);
+
+    useEffect(() => {
+        setEventTime(eventDate.set('h', startTime.get('h')).set('m', startTime.get('m')));
+    }, [eventDate, startTime]);
 
     const validateInput = () => {
         if (!title) {
@@ -96,22 +106,23 @@ const TicketingRegisterContent = () => {
     const submit = async () => {
         validateInput();
 
+        const body = {
+            title,
+            description,
+            eventTime: eventTime.format('YYYY-MM-DD HH:mm'),
+            runningMinutes: endTime.diff(startTime, 'm'),
+            stock: quantity,
+            price,
+            location,
+            saleStart: saleStartDate.set('h', 0).set('m', 0).format('YYYY-MM-DD HH:mm'),
+            saleEnd: saleEndDate.set('h', 24).set('m', 0).format('YYYY-MM-DD HH:mm'),
+            category: 'none',
+        };
+
+        console.log(body);
+
         axios
-            .post('/api/ticketings', {
-                title,
-                description,
-                eventTime: eventDate
-                    .set('h', startTime.get('h'))
-                    .set('m', startTime.get('m'))
-                    .format('yyyy-MM-dd HH:mm'),
-                runningMinutes: endTime.diff(startTime, 'm'),
-                stock: quantity,
-                price,
-                location,
-                saleStart: saleStartDate.format('yyyy-MM-dd HH:mm'),
-                saleEnd: saleEndDate.format('yyyy-MM-dd HH:mm'),
-                category: 'none',
-            })
+            .post('/api/ticketings/', body, { withCredentials: true })
             .then((res: { data: { ticketingId: string; createdAt: Date } }) => {
                 navigate(`/ticketing/${res.data.ticketingId}`);
             })
@@ -204,6 +215,7 @@ const TicketingRegisterContent = () => {
                             setEndDate={setSaleEndDate}
                             inputRef={inputRef}
                             setValidationValue={setSalePeriodValidation}
+                            eventTime={eventTime}
                         ></InputPeriod>
                     </AccordionDetails>
                 </InputAccordion>
@@ -217,6 +229,7 @@ const TicketingRegisterContent = () => {
             <ContainedButton
                 style={{ margin: '40px', fontSize: 14, color: 'white', width: '20%' }}
                 onClick={submit}
+                type={'button'}
             >
                 등록하기
             </ContainedButton>

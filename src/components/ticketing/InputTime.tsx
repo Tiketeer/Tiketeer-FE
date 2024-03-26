@@ -68,7 +68,7 @@ const InputTime = ({
                         }}
                         onError={newError => {
                             setError(newError);
-                            setValidationValue(false);
+                            setValidationValue(newError ? false : true);
                         }}
                         slotProps={{
                             textField: {
