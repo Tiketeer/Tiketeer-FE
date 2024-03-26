@@ -49,6 +49,7 @@ export default function SignIn() {
             })
             .then(() => {
                 setIsLogined(true);
+                localStorage.setItem('loginState', 'true');
                 navigate(-1);
             })
             .catch(err => {
@@ -74,16 +75,29 @@ export default function SignIn() {
                 type="password"
             />
             <ForgotPasswordText>Recover Password?</ForgotPasswordText>
-            <ContainedButton
-                variant="contained"
-                sx={{
-                    height: 48,
-                    boxShadow: '0 18px 30px rgba(68, 97, 242, 0.11)',
-                }}
-                onClick={submit}
-            >
-                Sign In
-            </ContainedButton>
+            {email === '' || password === '' ? (
+                <ContainedButton
+                    variant="contained"
+                    sx={{
+                        height: 48,
+                        boxShadow: '0 18px 30px rgba(68, 97, 242, 0.11)',
+                    }}
+                    disabled
+                >
+                    Sign In
+                </ContainedButton>
+            ) : (
+                <ContainedButton
+                    variant="contained"
+                    sx={{
+                        height: 48,
+                        boxShadow: '0 18px 30px rgba(68, 97, 242, 0.11)',
+                    }}
+                    onClick={submit}
+                >
+                    Sign In
+                </ContainedButton>
+            )}
         </SignInContainer>
     );
 }

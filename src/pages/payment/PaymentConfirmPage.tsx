@@ -23,7 +23,7 @@ import paymentConfirmImg from '../../assets/image/payment_confirm.png';
 const PaymentConfirmPage = () => {
     return (
         <PageWrapper>
-            <PageHeader isLogined={true} />
+            <PageHeader />
             <MainContent>
                 <ConfirmationMessageSection>
                     <ConfirmationMessage>Completed!</ConfirmationMessage>

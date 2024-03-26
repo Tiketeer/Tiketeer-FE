@@ -33,7 +33,7 @@ const HeaderText = styled.div`
 const TicketingRegisterPage = () => {
     return (
         <TicketingRegisterPageContainer>
-            <PageHeader isLogined />
+            <PageHeader />
             <TicketingRegisterContainer>
                 <HeaderText>새로운 티케팅 등록하기</HeaderText>
                 <TicketingRegister />

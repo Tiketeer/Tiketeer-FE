@@ -21,27 +21,16 @@ export const RegisterHeaderText = styled.div`
 
 export default function Register() {
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [passwordConfirm, setPasswordConfirm] = useState('');
     const navigate = useNavigate();
 
     const onChangeEmail: React.ChangeEventHandler<HTMLInputElement> = e => {
         setEmail(e.target.value);
     };
 
-    const onChangePassword: React.ChangeEventHandler<HTMLInputElement> = e => {
-        setPassword(e.target.value);
-    };
-
-    const onChangePasswordConfirm: React.ChangeEventHandler<HTMLInputElement> = e => {
-        setPasswordConfirm(e.target.value);
-    };
-
     const submit = async () => {
         axios
             .post('/api/members/register', {
                 email,
-                password,
                 // TODO seler button
                 isSeller: true,
             })
@@ -63,36 +52,34 @@ export default function Register() {
                 color="primary"
                 onChange={onChangeEmail}
             />
-            <TextField
-                id="outlined-basic"
-                label="Password"
-                variant="outlined"
-                color="primary"
-                type="password"
-                onChange={onChangePassword}
-            />
-            <TextField
-                id="outlined-basic"
-                label="Confirm Password"
-                variant="outlined"
-                color="primary"
-                type="password"
-                onChange={onChangePasswordConfirm}
-            />
-            <Button
-                variant="contained"
-                sx={{
-                    height: 48,
-                    boxShadow: '0 18px 30px rgba(68, 97, 242, 0.11)',
-                    backgroundColor: COLOR.LIGHTER,
-                    ':hover': {
-                        backgroundColor: COLOR.DEFAULT,
-                    },
-                }}
-                onClick={submit}
-            >
-                REGISTER
-            </Button>
+            {email === '' ? (
+                <Button
+                    variant="contained"
+                    sx={{
+                        height: 48,
+                        boxShadow: '0 18px 30px rgba(68, 97, 242, 0.11)',
+                        backgroundColor: COLOR.LIGHTER,
+                        ':hover': {
+                            backgroundColor: COLOR.DEFAULT,
+                        },
+                    }}
+                    disabled
+                >
+                    REGISTER
+                </Button>
+            ) : (
+                <Button
+                    variant="contained"
+                    sx={{
+                        height: 48,
+                        boxShadow: '0 18px 30px rgba(68, 97, 242, 0.11)',
+                        backgroundColor: COLOR.DARKER,
+                    }}
+                    onClick={submit}
+                >
+                    REGISTER
+                </Button>
+            )}
         </RegisterContainer>
     );
 }

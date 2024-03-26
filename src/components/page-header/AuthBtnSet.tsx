@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { isLoginedState } from 'atoms/atom';
 import { COLOR } from 'color/color';
 import { CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 import AuthButton from './AuthButton';
 
 const PageHeaderAuthBtnSetContainer = styled.div`
@@ -23,15 +25,23 @@ const ProfileStyle: CSSProperties = {
     color: COLOR.LIGHTER,
 };
 
-const PageHeaderAuthBtnSet = (props: { isLogined: boolean }) => {
-    const { isLogined } = props;
+const PageHeaderAuthBtnSet = () => {
     const navigate = useNavigate();
+
+    const [isLogined, setIsLogined] = useRecoilState(isLoginedState);
+
+    const onClickLogout = async () => {
+        window.location.reload();
+        setIsLogined(false);
+        localStorage.removeItem('loginState');
+    };
+
     return (
         <PageHeaderAuthBtnSetContainer>
             {isLogined ? (
                 <>
                     <AccountCircleIcon style={ProfileStyle}></AccountCircleIcon>
-                    <AuthButton text="Logout" isFilled={true} />
+                    <AuthButton text="Logout" isFilled={true} callback={onClickLogout} />
                 </>
             ) : (
                 <>
