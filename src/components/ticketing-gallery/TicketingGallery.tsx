@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { ticketing } from 'type/ticketing';
+import { Ticketing } from 'type/ticketing';
 import GalleryArea from './GalleryArea';
 
 export const GalleryContainer = styled.div`
@@ -16,7 +16,7 @@ export const EventTextArea = styled.div`
 
 export const TicketingArea = styled.div``;
 
-const TicketingGallery = (props: { ticketings: ticketing[] }) => {
+const TicketingGallery = (props: { ticketings: Ticketing[] }) => {
     const { ticketings } = props;
     return (
         <GalleryContainer>
