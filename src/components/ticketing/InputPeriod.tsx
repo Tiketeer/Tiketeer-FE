@@ -84,7 +84,6 @@ const InputPeriod = ({
                             }
                         }}
                         onError={newError => {
-                            console.log(newError);
                             setError(
                                 newError === 'minDate'
                                     ? 'invalidDate'

@@ -119,12 +119,10 @@ const TicketingRegisterContent = () => {
             category: 'none',
         };
 
-        console.log(body);
-
         axios
             .post('/api/ticketings/', body, { withCredentials: true })
-            .then((res: { data: { ticketingId: string; createdAt: Date } }) => {
-                navigate(`/ticketing/${res.data.ticketingId}`);
+            .then((res: { data: { data: { ticketingId: string; createdAt: Date } } }) => {
+                navigate(`/ticketing/${res.data.data.ticketingId}`);
             })
             .catch(err => {
                 alert('티케팅 등록에 실패했습니다.');
