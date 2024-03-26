@@ -28,7 +28,7 @@ interface InputDateProps {
     setDate: React.Dispatch<React.SetStateAction<Dayjs>>;
 }
 
-const InputDate = ({ date, setDate }: InputDateProps) => {
+const InputEventDate = ({ date, setDate }: InputDateProps) => {
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ ...centerFlexStyle }}>
@@ -47,4 +47,4 @@ const InputDate = ({ date, setDate }: InputDateProps) => {
     );
 };
 
-export default InputDate;
+export default InputEventDate;
