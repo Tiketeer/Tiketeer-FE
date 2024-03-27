@@ -109,13 +109,13 @@ const TicketingRegisterContent = () => {
         const body = {
             title,
             description,
-            eventTime: eventTime.format('YYYY-MM-DD HH:mm'),
+            eventTime: eventTime.format('YYYY-MM-DDTHH:mm:ss'),
             runningMinutes: endTime.diff(startTime, 'm'),
             stock: quantity,
             price,
             location,
-            saleStart: saleStartDate.set('h', 0).set('m', 0).format('YYYY-MM-DD HH:mm'),
-            saleEnd: saleEndDate.set('h', 24).set('m', 0).format('YYYY-MM-DD HH:mm'),
+            saleStart: saleStartDate.set('h', 0).set('m', 0).format('YYYY-MM-DDTHH:mm:ss'),
+            saleEnd: saleEndDate.set('h', 24).set('m', 0).format('YYYY-MM-DDTHH:mm:ss'),
             category: 'none',
         };
 
