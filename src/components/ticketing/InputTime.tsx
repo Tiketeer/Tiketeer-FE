@@ -4,7 +4,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { COLOR } from 'color/color';
 import { Dayjs } from 'dayjs';
-import { useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { centerFlexStyle } from '../../styles/align';
 
 const theme = createTheme({
@@ -29,9 +29,18 @@ interface InputDateProps {
     endTime: Dayjs | null;
     setStartTime: React.Dispatch<React.SetStateAction<Dayjs>>;
     setEndTime: React.Dispatch<React.SetStateAction<Dayjs>>;
+    inputRef: React.MutableRefObject<any>;
+    setValidationValue: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const InputDate = ({ startTime, setStartTime, endTime, setEndTime }: InputDateProps) => {
+const InputTime = ({
+    startTime,
+    setStartTime,
+    endTime,
+    setEndTime,
+    inputRef,
+    setValidationValue,
+}: InputDateProps) => {
     const [error, setError] = useState<TimeValidationError | null>(null);
 
     const errorMessage = useMemo(() => {
@@ -57,13 +66,17 @@ const InputDate = ({ startTime, setStartTime, endTime, setEndTime }: InputDatePr
                                 setStartTime(newDate);
                             }
                         }}
-                        onError={newError => setError(newError)}
+                        onError={newError => {
+                            setError(newError);
+                            setValidationValue(newError ? false : true);
+                        }}
                         slotProps={{
                             textField: {
                                 helperText: errorMessage,
                             },
                         }}
                         maxTime={endTime}
+                        ref={el => (inputRef.current[1] = el)}
                     />
                     <TimePicker
                         label="종료시간"
@@ -86,4 +99,4 @@ const InputDate = ({ startTime, setStartTime, endTime, setEndTime }: InputDatePr
     );
 };
 
-export default InputDate;
+export default InputTime;

@@ -1,9 +1,10 @@
 import { Box, ThemeProvider, createTheme } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers';
+import { DatePicker, DateValidationError } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { COLOR } from 'color/color';
-import { Dayjs } from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
+import { useState } from 'react';
 import { centerFlexStyle } from '../../styles/align';
 
 const theme = createTheme({
@@ -28,7 +29,9 @@ interface InputDateProps {
     setDate: React.Dispatch<React.SetStateAction<Dayjs>>;
 }
 
-const InputDate = ({ date, setDate }: InputDateProps) => {
+const InputEventDate = ({ date, setDate }: InputDateProps) => {
+    const [error, setError] = useState<DateValidationError>(null);
+
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ ...centerFlexStyle }}>
@@ -40,6 +43,13 @@ const InputDate = ({ date, setDate }: InputDateProps) => {
                                 setDate(newDate);
                             }
                         }}
+                        onError={newError => setError(newError)}
+                        slotProps={{
+                            textField: {
+                                helperText: error ? '이벤트 날짜는 오늘 이후여야 합니다' : null,
+                            },
+                        }}
+                        minDate={dayjs().add(1, 'day')}
                     />
                 </LocalizationProvider>
             </Box>
@@ -47,4 +57,4 @@ const InputDate = ({ date, setDate }: InputDateProps) => {
     );
 };
 
-export default InputDate;
+export default InputEventDate;
