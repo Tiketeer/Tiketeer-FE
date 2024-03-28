@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
+import { LOGIN_STATE, Login } from 'type/login';
+import { ApiResponseType } from 'type/response';
 import { ContainedButton } from '../button/ButtonStyle';
 
 export const SignInHeaderText = styled.div`
@@ -43,13 +45,13 @@ export default function SignIn() {
 
     const submit = async () => {
         axios
-            .post('/api/auth/login', {
+            .post<ApiResponseType<Login>>('/api/auth/login', {
                 email,
                 password,
             })
-            .then(() => {
-                setIsLogined(true);
-                localStorage.setItem('loginState', 'true');
+            .then(({ data }) => {
+                setIsLogined({ isLogined: true, role: data.data.roleEnum });
+                localStorage.setItem(LOGIN_STATE, data.data.roleEnum);
                 navigate(-1);
             })
             .catch(err => {

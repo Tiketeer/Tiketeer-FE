@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import axios from 'axios';
 import CancelButton from 'components/button/CancelButton';
 import CommonButton from 'components/button/CommonButton';
 import PageFooter from 'components/page-footer/PageFooter';
@@ -6,6 +7,10 @@ import PageHeader from 'components/page-header/PageHeader';
 import TicketingInfo from 'components/ticketing-info/TicketingInfo';
 import TicketingOpenInfo from 'components/ticketing-open-info/TicketingOpenInfo';
 import TicketingReserve from 'components/ticketing-reserve/TicketingReserve';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { LOGIN_STATE } from 'type/login';
+import { ApiResponseType } from 'type/response';
 import { TicketingDetail } from 'type/ticketing';
 
 export const TicketingDetailContainer = styled.div`
@@ -45,25 +50,40 @@ const ButtonBox = styled.div`
 `;
 
 const TicketingDetailPage = () => {
-    const info: TicketingDetail = {
-        ticketingId: 'ticketingId',
-        category: 'Music',
-        eventTime: '2024-03-01 12:00:00',
-        location: 'The Icon, BSD',
-        title: 'Panic! at the Disco',
-        price: 450000,
-        description: `익사이팅한 음악과 퍼포먼스 그리고 워터파이팅이 더해진 새로운 차원의 경험 !
-놓칠 수 없는 최고의 워터 뮤직 페스티벌 워터밤 서울 2024`,
-        runningMinutes: 540,
-        createdAt: new Date().toDateString(),
-        remainedStock: 100,
-        saleStart: '2024-03-01 12:00:00',
-        saleEnd: '2024-03-01 12:00:00',
-    };
+    const navigate = useNavigate();
+    const [ticketingInfo, setTicketingInfo] = useState<TicketingDetail>({
+        ticketingId: '',
+        title: '',
+        location: '',
+        eventTime: '',
+        saleStart: '',
+        saleEnd: '',
+        remainedStock: 0,
+        createdAt: '',
+        category: '',
+        runningMinutes: 0,
+        price: 0,
+        description: '',
+    });
 
-    const date = new Date(info.eventTime);
-    const isOpen = date.getTime() <= Date.now();
-    const isSeller = true;
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isSeller, setIsSeller] = useState<boolean>(false);
+
+    const location = useLocation();
+    useEffect(() => {
+        axios.get<ApiResponseType<TicketingDetail>>(`/api${location.pathname}`).then(({ data }) => {
+            setTicketingInfo({
+                ...data.data,
+            });
+
+            const date = new Date(data.data.saleStart);
+            setIsOpen(date.getTime() <= Date.now());
+            const role = localStorage.getItem(LOGIN_STATE);
+            if (role) {
+                setIsSeller(role === 'SELLER');
+            }
+        });
+    }, []);
 
     return (
         <TicketingDetailContainer>
@@ -71,12 +91,22 @@ const TicketingDetailPage = () => {
             <TicketingBodyContainer>
                 <Blank />
                 <TicketingBodyBox>
-                    <TicketingInfo ticketing={info} />
-                    {isOpen ? <TicketingReserve /> : <TicketingOpenInfo />}
+                    <TicketingInfo ticketing={ticketingInfo} />
+                    {isOpen ? (
+                        <TicketingReserve ticketing={ticketingInfo} />
+                    ) : (
+                        <TicketingOpenInfo />
+                    )}
                     {!isOpen && isSeller ? (
                         <ButtonContainer>
                             <ButtonBox>
-                                <CommonButton text="수정" isFilled={true}></CommonButton>
+                                <CommonButton
+                                    text="수정"
+                                    isFilled={true}
+                                    callback={() => {
+                                        navigate(`${location.pathname}/edit`);
+                                    }}
+                                ></CommonButton>
                             </ButtonBox>
                             <ButtonBox>
                                 <CancelButton text="삭제"></CancelButton>

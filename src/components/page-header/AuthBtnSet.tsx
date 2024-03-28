@@ -5,6 +5,7 @@ import { COLOR } from 'color/color';
 import { CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
+import { LOGIN_STATE } from 'type/login';
 import AuthButton from './AuthButton';
 
 const PageHeaderAuthBtnSetContainer = styled.div`
@@ -32,15 +33,21 @@ const PageHeaderAuthBtnSet = () => {
 
     const onClickLogout = async () => {
         window.location.reload();
-        setIsLogined(false);
-        localStorage.removeItem('loginState');
+        setIsLogined({ isLogined: false, role: '' });
+        localStorage.removeItem(LOGIN_STATE);
     };
 
     return (
         <PageHeaderAuthBtnSetContainer>
-            {isLogined ? (
+            {isLogined.isLogined ? (
                 <>
-                    <AccountCircleIcon style={ProfileStyle}></AccountCircleIcon>
+                    <div
+                        onClick={() => {
+                            navigate('/mypage');
+                        }}
+                    >
+                        <AccountCircleIcon style={ProfileStyle}></AccountCircleIcon>
+                    </div>
                     <AuthButton text="Logout" isFilled={true} callback={onClickLogout} />
                 </>
             ) : (

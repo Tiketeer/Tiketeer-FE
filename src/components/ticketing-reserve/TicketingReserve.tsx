@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
+import { Button, SxProps, Theme } from '@mui/material';
 import { COLOR } from 'color/color';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { TicketingDetail } from 'type/ticketing';
+import { getDate, getHours, getMinutes, getMonth } from 'util/time';
 
 const TicketingReserveContainer = styled.div`
     display: flex;
@@ -127,18 +131,40 @@ const ReserveButtonBox = styled.div`
     padding: 10px 15px;
 `;
 
-const ReserveButton = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+const buttonStyle: SxProps<Theme> = {
+    minHeight: '60px',
+    minWidth: '270px',
+    border: 1,
+    borderColor: COLOR.DEFAULT,
+    backgroundColor: COLOR.DEFAULT,
+    color: 'white',
+    fontSize: 'auto',
+    fontWeight: 'medium',
+    fontFamily: 'General Sans',
+    textTransform: 'none',
+    ':hover': {
+        backgroundColor: COLOR.DARKER,
+    },
+};
 
-    min-height: 60px;
-    min-width: 270px;
-    background: ${COLOR.DARKER};
-    color: white;
-`;
+const TicketingReserve = (props: { ticketing: TicketingDetail }) => {
+    const { ticketing } = props;
+    const location = useLocation();
 
-const TicketingReserve = () => {
+    const date = new Date(ticketing.eventTime);
+    const eventTime = [
+        date.getFullYear() + '년',
+        getMonth(ticketing.eventTime) + '월',
+        getDate(ticketing.eventTime) + '일',
+    ].join(' ');
+
+    const hour = [
+        getHours(ticketing.eventTime) + '시',
+        getMinutes(ticketing.eventTime) + '분',
+    ].join(' ');
+
+    const navigate = useNavigate();
+
     return (
         <TicketingReserveContainer>
             <TicketingReserveTextBox>
@@ -147,21 +173,31 @@ const TicketingReserve = () => {
             </TicketingReserveTextBox>
             <ReserveButtonContainer>
                 <DateButtonContainer>
-                    <DateButton>2024 07 05 friday</DateButton>
+                    <DateButton>{eventTime}</DateButton>
                 </DateButtonContainer>
                 <TimeButtonContainer>
-                    <TimeButton>13h 00m</TimeButton>
+                    <TimeButton>{hour}</TimeButton>
                 </TimeButtonContainer>
                 <SelectedTicketContainer>
                     <SelectedTicketTextBox>선택한 회차별 좌석 현황</SelectedTicketTextBox>
                     <SelectedTicketInfoContainer>
                         <SelectedTicketName>ticket</SelectedTicketName>
-                        <SelectedTicketPrice>121,000</SelectedTicketPrice>
+                        <SelectedTicketPrice>
+                            {ticketing.price.toLocaleString()}
+                        </SelectedTicketPrice>
                     </SelectedTicketInfoContainer>
                 </SelectedTicketContainer>
             </ReserveButtonContainer>
             <ReserveButtonBox>
-                <ReserveButton>예매하기</ReserveButton>
+                <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                    onClick={() => {
+                        navigate(`${location.pathname}/order`);
+                    }}
+                >
+                    예매하기
+                </Button>
             </ReserveButtonBox>
         </TicketingReserveContainer>
     );
