@@ -104,7 +104,7 @@ const TicketingDetailPage = () => {
                                     text="수정"
                                     isFilled={true}
                                     callback={() => {
-                                        navigate(`${location.pathname}/patch`);
+                                        navigate(`${location.pathname}/edit`);
                                     }}
                                 ></CommonButton>
                             </ButtonBox>

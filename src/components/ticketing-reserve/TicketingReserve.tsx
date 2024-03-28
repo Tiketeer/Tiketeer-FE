@@ -131,17 +131,6 @@ const ReserveButtonBox = styled.div`
     padding: 10px 15px;
 `;
 
-const ReserveButton = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    min-height: 60px;
-    min-width: 270px;
-    background: ${COLOR.DARKER};
-    color: white;
-`;
-
 const buttonStyle: SxProps<Theme> = {
     minHeight: '60px',
     minWidth: '270px',
