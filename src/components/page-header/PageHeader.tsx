@@ -32,6 +32,9 @@ const LogoContainer = styled.div`
     font-size: 30px;
     font-weight: bold;
     color: ${COLOR.DEFAULT};
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 const PageHeader = () => {
