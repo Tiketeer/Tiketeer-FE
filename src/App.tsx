@@ -35,10 +35,10 @@ function App() {
                 <Route path="/mypage" element={<MyPage />} />
                 <Route path="/payment-complete" element={<PaymentConfirmPage />} />
                 <Route path="/payment" element={<PaymentPage />} />
-                <Route path="/ticketing/:id" element={<TicketingDetailPage />} />
-                <Route path="/ticketing/:id/order" element={<OrderDetailPage />} />
+                <Route path="/ticketings/:id" element={<TicketingDetailPage />} />
+                <Route path="/ticketings/:id/order" element={<OrderDetailPage />} />
                 <Route path="/" element={<MainPage />} />
-                <Route path="/ticketing/register" element={<TicketRegisterPage />} />
+                <Route path="/ticketings/register" element={<TicketRegisterPage />} />
             </Routes>
         </RecoilRoot>
     );

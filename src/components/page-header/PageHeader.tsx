@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { COLOR } from 'color/color';
 import { PROJECT_NAME } from 'constant';
+import { useNavigate } from 'react-router-dom';
 import PageHeaderAuthBtnSet from './AuthBtnSet';
 import CategoryPanel from './CategoryPanel';
 
@@ -34,10 +35,17 @@ const LogoContainer = styled.div`
 `;
 
 const PageHeader = () => {
+    const navigate = useNavigate();
     return (
         <PageHeaderWrapperContainer>
             <PageHeaderContainer>
-                <LogoContainer>{PROJECT_NAME}</LogoContainer>
+                <LogoContainer
+                    onClick={() => {
+                        navigate('/');
+                    }}
+                >
+                    {PROJECT_NAME}
+                </LogoContainer>
                 <CategoryPanel />
                 <PageHeaderAuthBtnSet></PageHeaderAuthBtnSet>
             </PageHeaderContainer>

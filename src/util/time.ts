@@ -29,3 +29,15 @@ export function getMonth(date: string): string {
     if (m < 10) return '0' + m;
     return m.toString();
 }
+
+export function getHours(date: string): string {
+    const h = new Date(date).getHours();
+    if (h < 10) return '0' + h;
+    return h.toString();
+}
+
+export function getMinutes(date: string): string {
+    const h = new Date(date).getMinutes();
+    if (h < 10) return '0' + h;
+    return h.toString();
+}
